@@ -19,4 +19,6 @@ Flask implements a bare-minimum CGI with powerful routing application.
 
 ## Why Flask SocketIO
 
-![alt text](pictures/diagram.png)
+<p align="center">
+    <img src="pictures/diagram.png" width="60%" />
+</p>
