@@ -20,7 +20,3 @@ Flask implements a bare-minimum CGI with powerful routing application.
 ## Why Flask SocketIO
 
 ![alt text](pictures/diagram.png)
-
-It supports multi-clients.
-
-![alt text](pictures/2.png)
