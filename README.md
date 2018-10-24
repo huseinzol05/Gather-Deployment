@@ -6,9 +6,9 @@ Gather how to deploy tensorflow models as much I can
 1. Object Detection using Flask SocketIO for WebRTC
 2. Object Detection using Flask SocketIO for opencv
 3. Speech streaming using Flask SocketIO
-4. Classifition using Flask + Gunicorn
-5. Classifition using TF Serving
-6. Inception Classifition using Flask SocketIO
+4. Classification using Flask + Gunicorn
+5. Classification using TF Serving
+6. Inception Classification using Flask SocketIO
 7. Object Detection using Flask + opencv
 
 ## Why Flask
