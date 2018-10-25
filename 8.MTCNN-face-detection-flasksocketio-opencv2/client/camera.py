@@ -44,9 +44,7 @@ receive_cam_thread.start()
 cap = cv2.VideoCapture(0)
 while True:
     ret, img = cap.read()
-    img_b = cv2.imencode('.jpg', cv2.cvtColor(img, cv2.COLOR_BGR2RGB))[
-        1
-    ].tobytes()
+    img_b = cv2.imencode('.jpg', img)[1].tobytes()
     base64_bytes = base64.b64encode(img_b)
     base64_string = base64_bytes.decode('utf-8')
     live_namespace.emit('livevideo', {'data': base64_string})

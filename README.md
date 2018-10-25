@@ -10,6 +10,8 @@ Gather how to deploy tensorflow models as much I can
 5. Classification using TF Serving
 6. Inception Classification using Flask SocketIO
 7. Object Detection using Flask + opencv
+8. Face-detection using Flask SocketIO for opencv
+9. Face-detection for opencv
 
 ## Why Flask
 

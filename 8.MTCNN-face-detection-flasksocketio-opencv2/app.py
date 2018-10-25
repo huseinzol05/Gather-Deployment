@@ -8,7 +8,7 @@ import numpy as np
 from PIL import Image
 import io
 import time
-from object_detection import *
+from face_detection import detect_face
 
 d = dirname(dirname(abspath(__file__)))
 
@@ -39,10 +39,8 @@ def test_live(message):
     app.queue.put(message['data'])
     img_bytes = base64.b64decode(app.queue.get())
     img_np = np.array(Image.open(io.BytesIO(img_bytes)))
-    img_np = detect_object(object_sess, img_np)
-    frame = cv2.imencode('.jpg', cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB))[
-        1
-    ].tobytes()
+    img_np = detect_object(img_np)
+    frame = cv2.imencode('.jpg', img_np)[1].tobytes()
     base64_bytes = base64.b64encode(frame)
     base64_string = base64_bytes.decode('utf-8')
     emit('camera_update', {'data': base64_string}, broadcast = True)
