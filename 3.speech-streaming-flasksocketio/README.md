@@ -8,7 +8,7 @@ pip3 install flask flask_socketio numpy SpeechRecognition pyaudio
 
 `client.py` is your microphone slave.
 
-`server.py` is yout server to process the speech. In this case, I use google Speech-to-Text.
+`server.py` is your server to process the speech. In this case, I use google Speech-to-Text.
 
 1. Run the server,
 ```bash

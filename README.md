@@ -12,6 +12,8 @@ Gather how to deploy tensorflow models as much I can
 7. Object Detection using Flask + opencv
 8. Face-detection using Flask SocketIO for opencv
 9. Face-detection for opencv
+10. Inception with Flask using Docker
+11. Multiple Inception with Flask using EC2 Docker Swarm + Nginx load balancer
 
 ## Why Flask
 
@@ -23,6 +25,12 @@ Flask implements a bare-minimum CGI with powerful routing application.
 
 <p align="left">
     <img src="pictures/diagram.png" width="40%" />
+</p>
+
+## Why load balancer
+
+<p align="left">
+    <img src="https://f5.com/Portals/1/Images/whitepaper-images/load-balancing-101-nuts-bolts/NutsBolts-fig1.png" width="40%" />
 </p>
 
 ## Printscreen
