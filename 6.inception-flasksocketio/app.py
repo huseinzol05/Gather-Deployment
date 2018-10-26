@@ -10,10 +10,6 @@ import io
 import time
 from object_inception import detect_object
 from scipy.misc import imsave
-import uuid
-
-location = '/img/'
-d = dirname(dirname(abspath(__file__)))
 
 app = Flask(__name__)
 app.queue = Queue()
@@ -43,15 +39,12 @@ def test_live(message):
     img_bytes = base64.b64decode(app.queue.get())
     img_np = np.array(Image.open(io.BytesIO(img_bytes)))
     label, index = detect_object(img_np)
-    new_id = uuid.uuid4()
-    new_location = '%s/%s.jpg' % (location, new_id)
-    imsave(new_location, img_np)
     emit(
         'camera_update',
-        {'location': new_location, 'label': label},
+        {'label': label},
         broadcast = True,
     )
 
 
 if __name__ == '__main__':
-    socketio.run(app, host = '0.0.0.0', port = 8020, debug = True)
+    socketio.run(app, host = 'localhost', port = 5000, debug = True)

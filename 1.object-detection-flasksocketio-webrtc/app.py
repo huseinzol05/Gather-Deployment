@@ -3,13 +3,14 @@ from flask_socketio import SocketIO, send, emit
 from flask import render_template, Response
 from queue import Queue
 from os.path import dirname, abspath
+import os
 import base64
 import cv2
 import numpy as np
 from PIL import Image
 import io
-from object_detection import *
-d = dirname(dirname(abspath(__file__)))
+from object_detection import detect_object
+d = os.getcwd()
 
 app = Flask(__name__)
 app.queue = Queue()
@@ -24,14 +25,14 @@ def gen_livestream():
             last_frame = frame
         else:
             if last_frame is None:
-                fh = open(d+"/video/static/black.jpg", "rb")
+                fh = open(d+"/static/black.jpg", "rb")
                 frame = fh.read()
                 fh.close()
             else:
                 frame = last_frame
-        if last_frame is None:
+        if last_frame:
             img_np = np.array(Image.open(io.BytesIO(frame)))
-            img_np = detect_object(object_sess, img_np)
+            img_np = detect_object(img_np)
             frame = cv2.imencode('.jpg', cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB))[1].tobytes()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
@@ -67,4 +68,4 @@ def video_feed():
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':
-    socketio.run(app, host = '0.0.0.0', port = 8020,debug=True)
+    socketio.run(app, host = 'localhost', port = 5000,debug=True)

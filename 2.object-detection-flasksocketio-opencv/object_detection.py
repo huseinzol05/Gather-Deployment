@@ -17,8 +17,8 @@ with detection_graph.as_default():
         serialized_graph = fid.read()
         od_graph_def.ParseFromString(serialized_graph)
         tf.import_graph_def(od_graph_def, name = '')
-        object_sess = tf.InteractiveSession()
-        object_sess.run(tf.global_variables_initializer())
+        sess = tf.InteractiveSession()
+        sess.run(tf.global_variables_initializer())
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(
@@ -27,7 +27,7 @@ categories = label_map_util.convert_label_map_to_categories(
 category_index = label_map_util.create_category_index(categories)
 
 
-def detect_object(sess, img):
+def detect_object(img):
     image_np_expanded = np.expand_dims(img, axis = 0)
     image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
     boxes = detection_graph.get_tensor_by_name('detection_boxes:0')

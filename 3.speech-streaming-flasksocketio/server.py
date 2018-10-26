@@ -34,4 +34,4 @@ def test_live(message):
     emit('speech_update', {'text': value},broadcast=True)
 
 if __name__ == '__main__':
-    socketio.run(app, host = '0.0.0.0', port = 8020,debug=True)
+    socketio.run(app, host = 'localhost', port = 5000,debug=True)

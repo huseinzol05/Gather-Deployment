@@ -35,11 +35,12 @@ mtcnn_detector = MtcnnDetector(
 
 
 def detect_face(img):
+    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     boxes_c, _ = mtcnn_detector.detect(img)
     for i in range(boxes_c.shape[0]):
         bbox = boxes_c[i, :4]
         visualization_utils.draw_bounding_box_on_image_array(
-            img,
+            img_rgb,
             int(bbox[1]),
             int(bbox[0]),
             int(bbox[3]),
@@ -48,4 +49,4 @@ def detect_face(img):
             display_str_list = ['face'],
             use_normalized_coordinates = False,
         )
-    return img
+    return img_rgb

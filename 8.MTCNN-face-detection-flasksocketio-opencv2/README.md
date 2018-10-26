@@ -9,3 +9,5 @@ python3 app.py
 ```bash
 python3 client/camera.py
 ```
+
+![alt text](screenshot.png)

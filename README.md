@@ -24,3 +24,9 @@ Flask implements a bare-minimum CGI with powerful routing application.
 <p align="left">
     <img src="pictures/diagram.png" width="40%" />
 </p>
+
+## Printscreen
+
+![alt text](1.object-detection-flasksocketio-webrtc/screenshot.png)
+
+All folders contain printscreen.

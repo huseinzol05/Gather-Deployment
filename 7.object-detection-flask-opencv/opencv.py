@@ -1,12 +1,11 @@
 import numpy as np
 import cv2
-import settings
 import os
 import tensorflow as tf
 import json
-from threading import Thread
-import threading
 import time
+from utils import label_map_util
+from utils import visualization_utils as vis_util
 
 MODEL_NAME = 'ssd_mobilenet'
 PATH_TO_CKPT = os.path.join(MODEL_NAME, 'frozen_inference_graph.pb')
@@ -20,8 +19,8 @@ with detection_graph.as_default():
         serialized_graph = fid.read()
         od_graph_def.ParseFromString(serialized_graph)
         tf.import_graph_def(od_graph_def, name = '')
-        object_sess = tf.InteractiveSession()
-        object_sess.run(tf.global_variables_initializer())
+        sess = tf.InteractiveSession()
+        sess.run(tf.global_variables_initializer())
 
 label_map = label_map_util.load_labelmap(PATH_TO_LABELS)
 categories = label_map_util.convert_label_map_to_categories(
@@ -51,7 +50,7 @@ class Camera(object):
             feed_dict = {image_tensor: image_np_expanded},
         )
         vis_util.visualize_boxes_and_labels_on_image_array(
-            img,
+            frame,
             np.squeeze(boxes),
             np.squeeze(classes).astype(np.int32),
             np.squeeze(scores),
@@ -59,4 +58,5 @@ class Camera(object):
             use_normalized_coordinates = True,
             line_thickness = 8,
         )
-        return cv2.imencode('.jpg', img)[1].tobytes()
+        # return BGR, cv2 will returned BGR to RGB
+        return cv2.imencode('.jpg', frame)[1].tobytes()

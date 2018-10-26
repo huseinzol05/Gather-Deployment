@@ -8,7 +8,7 @@ from threading import Thread, ThreadError
 import io
 
 img_np = None
-socketIO = SocketIO('http://192.168.0.1', 8020)
+socketIO = SocketIO('localhost',5000)
 live_namespace = socketIO.define(BaseNamespace, '/live')
 
 

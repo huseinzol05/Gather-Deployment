@@ -1,0 +1,3 @@
+*.pb
+*.ckpt
+**/__pycache__

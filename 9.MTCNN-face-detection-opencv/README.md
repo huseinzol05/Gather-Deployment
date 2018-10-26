@@ -1,6 +1,8 @@
 ## How-to
 
-1. Just run `live_mtcnn.py`,
+1. Just run `app.py`,
 ```bash
-python3 live_mtcnn.py
+python3 app.py
 ```
+
+![alt text](screenshot.png)

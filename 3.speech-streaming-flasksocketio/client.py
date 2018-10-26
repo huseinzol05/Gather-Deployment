@@ -4,7 +4,7 @@ from socketIO_client import SocketIO, BaseNamespace
 from threading import Thread, ThreadError
 import time
 
-socketIO = SocketIO('http://192.168.0.102', 8020)
+socketIO = SocketIO('localhost',5000)
 live_namespace = socketIO.define(BaseNamespace, '/live')
 
 def receive_events_thread():

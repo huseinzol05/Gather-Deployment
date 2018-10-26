@@ -8,7 +8,7 @@ import numpy as np
 from PIL import Image
 import io
 import time
-from object_detection import *
+from object_detection import detect_object
 
 d = dirname(dirname(abspath(__file__)))
 
@@ -39,7 +39,7 @@ def test_live(message):
     app.queue.put(message['data'])
     img_bytes = base64.b64decode(app.queue.get())
     img_np = np.array(Image.open(io.BytesIO(img_bytes)))
-    img_np = detect_object(object_sess, img_np)
+    img_np = detect_object(img_np)
     frame = cv2.imencode('.jpg', cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB))[
         1
     ].tobytes()
@@ -49,4 +49,4 @@ def test_live(message):
 
 
 if __name__ == '__main__':
-    socketio.run(app, host = '0.0.0.0', port = 8020, debug = True)
+    socketio.run(app, host = 'localhost', port = 5000, debug = True)

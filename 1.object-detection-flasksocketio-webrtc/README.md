@@ -14,7 +14,9 @@ MODEL_NAME = 'ssd_mobilenet'
 python3 app.py
 ```
 
-5. Go to [localhost](localhost:8020). You can edit the port and exposure in `app.py`,
+5. Go to [localhost](localhost:5000). You can edit the port and exposure in `app.py`,
 ```python
-socketio.run(app, host = '0.0.0.0', port = 8020,debug=True)
+socketio.run(app, host = 'localhost', port = 5000,debug=True)
 ```
+
+![alt text](screenshot.png)
