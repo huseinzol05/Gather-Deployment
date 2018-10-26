@@ -30,7 +30,7 @@ Flask implements a bare-minimum CGI with powerful routing application.
 ## Why load balancer
 
 <p align="left">
-    <img src="https://f5.com/Portals/1/Images/whitepaper-images/load-balancing-101-nuts-bolts/NutsBolts-fig1.png" width="40%" />
+    <img src="https://f5.com/Portals/1/Images/whitepaper-images/load-balancing-101-nuts-bolts/NutsBolts-fig1.png" width="50%" />
 </p>
 
 ## Printscreen
@@ -38,3 +38,10 @@ Flask implements a bare-minimum CGI with powerful routing application.
 ![alt text](1.object-detection-flasksocketio-webrtc/screenshot.png)
 
 All folders contain printscreen.
+
+## Notes
+
+1. Deploy them on a server, change `local` in code snippets to your own IP.
+2. WebRTC chrome only can tested on HTTPS server.
+3. When come to real deployment, always prepare for up-scaling architectures. Learn about DevOps.
+4. Please aware with your cloud cost!
