@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+    <property>
+       <name>yarn.resourcemanager.address</name>
+       <value>127.0.0.1:8032</value>
+    </property>
+</configuration>
