@@ -39,6 +39,8 @@ ADD ssh_config /root/.ssh/config
 
 RUN pip3 install tensorflow numpy pydoop==2.0a3
 
+RUN echo
+
 WORKDIR /app
 
 COPY . /app
