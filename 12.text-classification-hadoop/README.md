@@ -1,5 +1,19 @@
 ## How-to
 
+1. Make sure you installed `Docker` and `Docker-compose`.
+
+2. Spawn the container,
+```bash
+compose/build
+```
+
+3. Open new tab / window for terminal and access bash inside that container,
+```bash
+compose/bash
+```
+
+4. And you can start instructions below!
+
 #### [Overview hadoop dashboard](http://localhost:9870)
 
 ![alt text](printscreen/2.png)
