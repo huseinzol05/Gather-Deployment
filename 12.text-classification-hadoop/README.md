@@ -57,6 +57,8 @@ hadoop fs -get /user/output_lower
 
 #### Distributing text classification
 
+You can the architecture of the model, a very simple model just for an example, [notebook](freeze-model.ipynb)
+
 1. Run hadoop streaming,
 ```bash
 $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file classification.py -file dictionary-test.json -file frozen_model.pb -mapper classification.py -file reducer.py -reducer reducer.py -input /user/input_text/* -output /user/output_classification
