@@ -14,6 +14,7 @@ Gather how to deploy tensorflow models as much I can
 9. Face-detection for opencv
 10. Inception with Flask using Docker
 11. Multiple Inception with Flask using EC2 Docker Swarm + Nginx load balancer
+12. Text classification using Hadoop streaming MapReduce
 
 ## Why Flask
 
@@ -37,7 +38,7 @@ Flask implements a bare-minimum CGI with powerful routing application.
 
 ![alt text](1.object-detection-flasksocketio-webrtc/screenshot.png)
 
-All folders contain printscreen.
+All folders contain printscreens or logs.
 
 ## Notes
 
