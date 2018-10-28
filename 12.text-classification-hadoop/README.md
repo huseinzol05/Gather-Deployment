@@ -2,15 +2,15 @@
 
 #### [Overview hadoop dashboard](http://localhost:9870)
 
-![alt text]()
+![alt text](printscreen/2.png)
 
 You can check HDFS file system, Utilities -> Browse the file system
 
-![alt text]()
+![alt text](printscreen/3.png)
 
 #### [Overview hadoop jobs](http://localhost:8088/cluster)
 
-![alt text]()
+![alt text](printscreen/1.png)
 
 #### How to remove Yarn job
 
