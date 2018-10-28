@@ -43,7 +43,7 @@ Copy a file to HDFS,
 hadoop fs -put dictionary-test.json /user/dictionary-test.json
 ```
 
-#### Distributing lowercase
+#### Distributing lowercase, [lowercase.py](lowercase.py)
 
 1. Run hadoop streaming,
 ```bash
@@ -55,9 +55,9 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file 
 hadoop fs -get /user/output_lower
 ```
 
-#### Distributing text classification
+#### Distributing text classification, [classification.py](classification.py)
 
-You can the architecture of the model, a very simple model just for an example, [notebook](freeze-model.ipynb)
+You can check the architecture of the model, a very simple model just for an example, [notebook](freeze-model.ipynb)
 
 1. Run hadoop streaming,
 ```bash
