@@ -9,7 +9,7 @@
        <value>127.0.0.1:8032</value>
     </property>
     <property>
-      <name>yarn.nodemanager.resource.memory-mb</name>
-      <value>3048</value>
+	     <name>yarn.nodemanager.vmem-check-enabled</name>
+	     <value>false</value>
     </property>
 </configuration>

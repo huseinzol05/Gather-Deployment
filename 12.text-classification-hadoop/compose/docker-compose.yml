@@ -7,6 +7,8 @@ services:
     command: compose/develop
     environment:
       PYTHONPATH: .
+    volumes:
+      - ../:/app
     ports:
       - '8088:8088'
       - '9045:9045'
