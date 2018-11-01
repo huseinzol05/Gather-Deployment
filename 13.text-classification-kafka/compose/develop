@@ -1,0 +1,3 @@
+#!/bin/sh
+
+supervisord --nodaemon -c supervisord.conf
