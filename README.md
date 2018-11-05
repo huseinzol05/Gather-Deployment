@@ -16,6 +16,7 @@ Gather how to deploy tensorflow models as much I can
 11. Multiple Inception with Flask using EC2 Docker Swarm + Nginx load balancer
 12. Text classification using Hadoop streaming MapReduce
 13. Text classification using Kafka
+14. Text classification on Distributed TF using Flask + Gunicorn + Eventlet
 
 ## Why Flask
 
