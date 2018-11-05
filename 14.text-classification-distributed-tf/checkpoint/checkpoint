@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/husein/space/text-dataset/polarity/model-test/test"
+all_model_checkpoint_paths: "/home/husein/space/text-dataset/polarity/model-test/test"
