@@ -6,7 +6,7 @@ First machine may only done first layer, second machine may only done second lay
 
 We load our model checkpoint and wrap it with Flask.
 
-<img src="tf-distributed.png" align="left" width="40%">
+<img src="tf-distributed.png" width="40%">
 
 ## How-to
 
