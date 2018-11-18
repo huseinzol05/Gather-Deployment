@@ -17,6 +17,7 @@ Gather how to deploy tensorflow models as much I can
 12. Text classification using Hadoop streaming MapReduce
 13. Text classification using Kafka
 14. Text classification on Distributed TF using Flask + Gunicorn + Eventlet
+15. Text classification using Tornado + Gunicorn
 
 ## Why Flask
 
