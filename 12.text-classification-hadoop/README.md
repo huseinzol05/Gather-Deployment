@@ -69,16 +69,54 @@ hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file 
 hadoop fs -get /user/output_lower
 ```
 
+3. Check [output_lower/part-00000](output_lower/part-00000)
+```text
+i love you so much
+the story is a shit
+the story is really good
+the story totally disgusting
+```
+
+#### Mapping word with dictionary, [mapping.py](mapping.py)
+
+1. Run hadoop streaming,
+```bash
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file mapping.py -file dictionary-test.json -mapper mapping.py -file reducer.py -reducer reducer.py -input /user/input_text/* -output /user/output_mapping
+```
+
+2. Copy the HDFS output to your local,
+```bash
+hadoop fs -get /user/output_mapping
+```
+
+3. Check [output_mapping/part-00000](output_mapping/part-00000)
+```text
+a: 5
+disgusting: UNK
+good: 45
+i: 47
+is: 9
+is: 9
+```
+
 #### Distributing text classification, [classification.py](classification.py)
 
 You can check the architecture of the model, a very simple model just for an example, [notebook](freeze-model.ipynb)
 
 1. Run hadoop streaming,
 ```bash
-$HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file classification.py -file dictionary-test.json -file frozen_model.pb -mapper classification.py -file reducer.py -reducer reducer.py -input /user/input_text/* -output /user/output_classification
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file classification.py -file dictionary-test.json -file frozen_model.pb -mapper classification.py -file reducer.py -reducer reducer.py -input /user/input_text/* -output /user/output_classification
 ```
 
 2. Copy the HDFS output to your local,
 ```bash
 hadoop fs -get /user/output_classification
+```
+
+3. Check [output_classification/part-00000](output_classification/part-00000)
+```text
+i love you so much: negative
+the story is a shit: positive
+the story is really good: positive
+the story totally disgusting: negative
 ```

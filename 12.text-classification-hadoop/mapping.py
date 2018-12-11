@@ -9,8 +9,8 @@ with open('dictionary-test.json', 'r') as fopen:
     dic = json.load(fopen)
 
 for line in sys.stdin:
-    sentences = line.split('\n')
+    sentences = list(filter(None, line.split('\n')))
     for sentence in sentences:
         for word in sentence.split():
             val = dic[word] if word in dic else 'UNK'
-            print(val)
+            print('%s: %s'%(word, val))

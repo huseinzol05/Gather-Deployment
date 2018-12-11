@@ -29,12 +29,12 @@ with open('dictionary-test.json', 'r') as fopen:
     dic = json.load(fopen)
 
 for line in sys.stdin:
-    sentences = line.split('\n')
+    sentences = list(filter(None, line.split('\n')))
     x = np.zeros((len(sentences), maxlen))
     for i, sentence in enumerate(sentences):
         for no, k in enumerate(sentence.split()[:maxlen][::-1]):
             val = dic[k] if k in dic else UNK
             x[i, -1 - no] = val
     indices = np.argmax(sess.run(Y, feed_dict = {X: x}), axis = 1)
-    for index in indices:
-        print(label[index])
+    for no, index in enumerate(indices):
+        print('%s: %s' %(sentences[no], label[index]))

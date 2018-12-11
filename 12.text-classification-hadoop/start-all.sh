@@ -9,6 +9,7 @@ $HADOOP_HOME/sbin/start-dfs.sh
 
 $HADOOP_HOME/bin/hdfs dfs -mkdir /user
 $HADOOP_HOME/bin/hdfs dfs -mkdir /user/input_text
+$HADOOP_HOME/bin/hdfs dfs -put text.txt /user/input_text
 $HADOOP_HOME/bin/hdfs dfs -put $HADOOP_HOME/etc/hadoop/*.xml /user
 
 echo 'Hit CTRL+C to exit container..'
