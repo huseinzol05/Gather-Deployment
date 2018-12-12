@@ -28,6 +28,32 @@ You can check the task id from,
 curl localhost:5000/upload_status/task_id
 ```
 
+Output from celery,
+```text
+tf-hadoop_1  | [2018-12-12 01:54:17,549: DEBUG/MainProcess] Task accepted: app.upload_files_dfs[bc5c1fee-6f0d-4a63-b06e-ddfbe5670b36] pid:1609
+tf-hadoop_1  | [2018-12-12 01:54:17,551: WARNING/ForkPoolWorker-4] 0: uploading /user/input_text/0-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,551: WARNING/ForkPoolWorker-4] 0: /opt/hadoop/bin/hdfs dfs -put 0-big-text.txt /user/input_text/0-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,556: WARNING/ForkPoolWorker-4] 1: uploading /user/input_text/1-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,556: WARNING/ForkPoolWorker-4] 1: /opt/hadoop/bin/hdfs dfs -put 1-big-text.txt /user/input_text/1-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,558: WARNING/ForkPoolWorker-4] 2: uploading /user/input_text/2-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,558: WARNING/ForkPoolWorker-4] 2: /opt/hadoop/bin/hdfs dfs -put 2-big-text.txt /user/input_text/2-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,569: WARNING/ForkPoolWorker-4] 3: uploading /user/input_text/3-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,569: WARNING/ForkPoolWorker-4] 3: /opt/hadoop/bin/hdfs dfs -put 3-big-text.txt /user/input_text/3-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,571: WARNING/ForkPoolWorker-4] 4: uploading /user/input_text/4-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,572: WARNING/ForkPoolWorker-4] 4: /opt/hadoop/bin/hdfs dfs -put 4-big-text.txt /user/input_text/4-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,583: WARNING/ForkPoolWorker-4] 5: uploading /user/input_text/5-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,583: WARNING/ForkPoolWorker-4] 5: /opt/hadoop/bin/hdfs dfs -put 5-big-text.txt /user/input_text/5-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,587: WARNING/ForkPoolWorker-4] 6: uploading /user/input_text/6-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,587: WARNING/ForkPoolWorker-4] 6: /opt/hadoop/bin/hdfs dfs -put 6-big-text.txt /user/input_text/6-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,590: WARNING/ForkPoolWorker-4] 7: uploading /user/input_text/7-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,590: WARNING/ForkPoolWorker-4] 7: /opt/hadoop/bin/hdfs dfs -put 7-big-text.txt /user/input_text/7-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,593: WARNING/ForkPoolWorker-4] 8: uploading /user/input_text/8-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,593: WARNING/ForkPoolWorker-4] 8: /opt/hadoop/bin/hdfs dfs -put 8-big-text.txt /user/input_text/8-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,596: WARNING/ForkPoolWorker-4] 9: uploading /user/input_text/9-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,596: WARNING/ForkPoolWorker-4] 9: /opt/hadoop/bin/hdfs dfs -put 9-big-text.txt /user/input_text/9-big-text.txt
+tf-hadoop_1  | [2018-12-12 01:54:17,614: INFO/ForkPoolWorker-4] Task app.upload_files_dfs[bc5c1fee-6f0d-4a63-b06e-ddfbe5670b36] succeeded in 0.06530934385955334s: {'result': 42, 'status': 'upload completed!'}
+```
+
 5. Curl to start reducing our uploaded text,
 ```bash
 curl localhost:5000/process
@@ -41,6 +67,26 @@ You will task id,
 You can check the task id from,
 ```bash
 curl localhost:5000/classify_text_status/task_id
+```
+
+Output from celery,
+```text
+tf-hadoop_1  | 2018-12-12 01:54:25,611 INFO mapred.FileInputFormat: Total input files to process : 11
+tf-hadoop_1  | 2018-12-12 01:54:26,483 INFO mapreduce.JobSubmitter: number of splits:11
+tf-hadoop_1  | 2018-12-12 01:54:26,502 INFO Configuration.deprecation: yarn.resourcemanager.system-metrics-publisher.enabled is deprecated. Instead, use yarn.system-metrics-publisher.enabled
+tf-hadoop_1  | 2018-12-12 01:54:26,555 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1544579631508_0001
+tf-hadoop_1  | 2018-12-12 01:54:26,556 INFO mapreduce.JobSubmitter: Executing with tokens: []
+tf-hadoop_1  | 2018-12-12 01:54:26,675 INFO conf.Configuration: resource-types.xml not found
+tf-hadoop_1  | 2018-12-12 01:54:26,676 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+tf-hadoop_1  | 2018-12-12 01:54:26,837 INFO impl.YarnClientImpl: Submitted application application_1544579631508_0001
+tf-hadoop_1  | 2018-12-12 01:54:26,864 INFO mapreduce.Job: The url to track the job: http://853f8b26e89e:8088/proxy/application_1544579631508_0001/
+tf-hadoop_1  | 2018-12-12 01:54:26,865 INFO mapreduce.Job: Running job: job_1544579631508_0001
+tf-hadoop_1  | 2018-12-12 01:54:31,925 INFO mapreduce.Job: Job job_1544579631508_0001 running in uber mode : false
+tf-hadoop_1  | 2018-12-12 01:54:31,926 INFO mapreduce.Job:  map 0% reduce 0%
+tf-hadoop_1  | 2018-12-12 01:54:42,000 INFO mapreduce.Job:  map 55% reduce 0%
+tf-hadoop_1  | 2018-12-12 01:54:50,036 INFO mapreduce.Job:  map 100% reduce 0%
+tf-hadoop_1  | 2018-12-12 01:54:52,043 INFO mapreduce.Job:  map 100% reduce 100%
+tf-hadoop_1  | 2018-12-12 01:54:53,051 INFO mapreduce.Job: Job job_1544579631508_0001 completed successfully
 ```
 
 6. Check [output_classification/part-00000](output_classification/part-00000)
