@@ -10,6 +10,7 @@ import logging
 import sys
 import random
 import time
+import string
 
 logging.basicConfig(level = logging.DEBUG)
 
@@ -19,26 +20,58 @@ app.config['CELERY_BROKER_URL'] = 'redis://redis:6379/0'
 app.config['CELERY_RESULT_BACKEND'] = 'redis://redis:6379/0'
 celery = Celery(app.name, broker = app.config['CELERY_BROKER_URL'])
 dfs_location = '/user/input_text'
-output_dfs_location = '/user/output_classification'
+
 celery.conf.update(app.config)
+
+
+def id_generator(size = 6, chars = string.ascii_uppercase + string.digits):
+    return ''.join(random.choice(chars) for _ in range(size))
+
+
+def get_hadoop_script(
+    input_location,
+    output_location,
+    mapper,
+    hadoop_location = '/opt/hadoop/bin/hadoop',
+    hadoop_streaming = '/opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar',
+    files = ['dictionary-test.json', 'frozen_model.pb'],
+    reducer = 'reducer.py',
+):
+    files = ' '.join(['-file %s' % (file) for file in files])
+    reducer = '-file %s -reducer %s' % (reducer, reducer)
+    mapper = '-file %s -mapper %s' % (mapper, mapper)
+    input_location = '-input %s/*' % (input_location)
+    output_location = '-output %s' % (output_location)
+    return '%s jar %s %s %s %s %s %s' % (
+        hadoop_location,
+        hadoop_streaming,
+        files,
+        mapper,
+        reducer,
+        input_location,
+        output_location,
+    )
 
 
 @celery.task(bind = True)
 def classify_text(self):
-    script = (
-        '/opt/hadoop/bin/hadoop jar /opt/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.1.1.jar -file classification.py -file dictionary-test.json -file frozen_model.pb -mapper classification.py -file reducer.py -reducer reducer.py -input %s/* -output %s'
-        % (dfs_location, output_dfs_location)
+    output_dfs_location = '/user/' + id_generator(10)
+    script = get_hadoop_script(
+        dfs_location, output_dfs_location, 'classification.py'
     )
-    subprocess.Popen(shlex.split(script), stdout = subprocess.PIPE)
+    print(script)
+    p = subprocess.Popen(shlex.split(script), stdout = subprocess.PIPE)
+    for line in p.stdout:
+        self.update_state(
+            state = 'PROGRESS', meta = {'status': line.rstrip().decode('utf-8')}
+        )
     subprocess.Popen(
         shlex.split(
-            '/opt/hadoop/bin/hadoop fs -get /user/output_classification'
+            '/opt/hadoop/bin/hadoop fs -get %s' % (output_dfs_location)
         ),
         stdout = subprocess.PIPE,
     )
-    self.update_state(
-        state = 'PROGRESS', meta = {'status': 'uploaded to local'}
-    )
+
     return {'status': 'classification completed!', 'result': 42}
 
 
