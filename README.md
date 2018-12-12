@@ -18,6 +18,7 @@ Gather how to deploy tensorflow models as much I can
 13. Text classification using Kafka
 14. Text classification on Distributed TF using Flask + Gunicorn + Eventlet
 15. Text classification using Tornado + Gunicorn
+16. Celery with Hadoop for Massive text classification using Flask
 
 ## Why Flask
 
