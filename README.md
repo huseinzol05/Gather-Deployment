@@ -20,23 +20,18 @@ Gather how to deploy tensorflow models as much I can
 15. Text classification using Tornado + Gunicorn
 16. Celery with Hadoop for Massive text classification using Flask
 
-## Why Flask
+## Technology used
 
-Flask implements a bare-minimum CGI with powerful routing application.
-
-![alt text](http://flask.pocoo.org/docs/1.0/_static/flask.png)
-
-## Why Flask SocketIO
-
-<p align="left">
-    <img src="pictures/diagram.png" width="40%" />
-</p>
-
-## Why load balancer
-
-<p align="left">
-    <img src="https://f5.com/Portals/1/Images/whitepaper-images/load-balancing-101-nuts-bolts/NutsBolts-fig1.png" width="50%" />
-</p>
+1. [Flask](http://flask.pocoo.org/)
+2. [Flask SocketIO](https://flask-socketio.readthedocs.io/)
+3. [Gunicorn](https://gunicorn.org/)
+4. [Eventlet](http://eventlet.net/)
+5. [Tornado](https://www.tornadoweb.org/)
+6. [Celery](http://www.celeryproject.org/)
+7. [Hadoop](https://hadoop.apache.org/)
+8. [Kafka](https://kafka.apache.org/)
+9. [Nginx](https://www.nginx.com/)
+10. [WebRTC](https://webrtc.org/)
 
 ## Printscreen
 
