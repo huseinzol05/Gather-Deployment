@@ -19,6 +19,7 @@ Gather how to deploy tensorflow models as much I can
 14. Text classification on Distributed TF using Flask + Gunicorn + Eventlet
 15. Text classification using Tornado + Gunicorn
 16. Celery with Hadoop for Massive text classification using Flask
+17. Luigi scheduler with Hadoop for Massive text classification
 
 ## Technology used
 
@@ -32,6 +33,7 @@ Gather how to deploy tensorflow models as much I can
 8. [Kafka](https://kafka.apache.org/)
 9. [Nginx](https://www.nginx.com/)
 10. [WebRTC](https://webrtc.org/)
+11. [Luigi Spotify](https://luigi.readthedocs.io/en/stable/index.html)
 
 ## Printscreen
 

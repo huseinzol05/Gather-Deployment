@@ -2,3 +2,4 @@
 *.ckpt
 **/__pycache__
 !*frozen_model.pb
+*.DS_Store
