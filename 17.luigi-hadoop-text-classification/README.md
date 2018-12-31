@@ -59,7 +59,7 @@ hadoop fs -put dictionary-test.json /user/dictionary-test.json
 
 #### Distributing wordcount, [wordcount-hadoop.py](wordcount-hadoop.py)
 
-1. Run luigi task, (yes, we cannot hadoop task inside a notebook, tested before, also cannot use `luigi.build` inside the script)
+1. Run luigi task, (yes, we cannot run hadoop task inside a notebook, tested before, also cannot use `luigi.build` inside the script)
 
 ```bash
 luigi --module wordcount-hadoop WordCount_Hadoop --filename big-text.txt --split-size 10 --scheduler-host localhost --scheduler-port 8082
@@ -90,7 +90,7 @@ hadoop fs -get /user/input_text/wordcount .
 
 #### Distributing text classification,
 
-1. Run luigi task, (yes, we cannot hadoop task inside a notebook, tested before, also cannot use `luigi.build` inside the script)
+1. Run luigi task, (yes, we cannot run hadoop task inside a notebook, tested before, also cannot use `luigi.build` inside the script)
 
 ```bash
 luigi --module textclassification-hadoop Classification_Hadoop --filename big-text.txt --split-size 10 --scheduler-host localhost --scheduler-port 8082
