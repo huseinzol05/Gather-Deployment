@@ -1,0 +1,19 @@
+version: '2.3'
+services:
+  celery:
+    build:
+      context: .
+      target: base
+    command: bash run.sh
+    environment:
+      - FLASK_DEBUG: '1'
+    volumes:
+      - .:/app
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000'
+      - '5555:5555'
+      - '8082:8082'
+      - '9000:9000'
+      - '5601:5601'
