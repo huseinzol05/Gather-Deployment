@@ -20,6 +20,8 @@ Gather how to deploy tensorflow models as much I can
 15. Text classification using Tornado + Gunicorn
 16. Celery with Hadoop for Massive text classification using Flask
 17. Luigi scheduler with Hadoop for Massive text classification
+18. Luigi scheduler with Distributed Celery for Massive text classification
+19. Airflow scheduler with elasticsearch for Massive text classification using Flask
 
 ## Technology used
 
@@ -34,12 +36,14 @@ Gather how to deploy tensorflow models as much I can
 9. [Nginx](https://www.nginx.com/)
 10. [WebRTC](https://webrtc.org/)
 11. [Luigi Spotify](https://luigi.readthedocs.io/en/stable/index.html)
+12. [Airflow](https://airflow.apache.org/)
+13. [Elastic search](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)
 
 ## Printscreen
 
 ![alt text](1.object-detection-flasksocketio-webrtc/screenshot.png)
 
-All folders contain printscreens or logs.
+**All folders contain print screens, logs and instructions on how to start.**
 
 ## Notes
 
