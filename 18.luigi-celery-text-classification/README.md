@@ -10,8 +10,18 @@ docker-compose -f docker-compose.yml up --build
 3. Request to put inside queue,
 ```bash
 curl --form file=@big-text.txt --form topic=big_text localhost:5000/upload
-curl --form file=@big-text.txt --form topic=big_text_another localhost:5000/upload
+curl --form file=@big-text.txt --form topic=big_text localhost:5000/upload
 ```
+
+4. Query inside kibana,
+
+```
+GET /_cat/indices?v
+
+GET long_text/_search
+```
+
+![alt text](screenshot/kibana.png)
 
 ## Screenshot
 

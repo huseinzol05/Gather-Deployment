@@ -13,27 +13,26 @@ celery = Celery(
 )
 celery.conf.update(app.config)
 
+
 @celery.task(bind = True)
 def luigi_task(self, filename, topic):
     luigi.build(
-        [Save_to_Elastic(
-            filename = filename, summary = topic, index = 'texts')
-        ],
+        [Save_to_Elastic(filename = filename, summary = topic, index = topic)],
         scheduler_host = 'localhost',
         scheduler_port = 8082,
     )
-    return {
-        'status': 'Task scheluded!',
-        'result': 42,
-    }
+    return {'status': 'Task scheluded!', 'result': 42}
+
 
 @app.route('/', methods = ['GET'])
 def hello():
     return jsonify('HALLO')
 
+
 @app.route('/sentiment', methods = ['GET'])
 def sentiment():
     return classify_sentiment(request.args.get('text'))
+
 
 @app.route('/upload', methods = ['POST'])
 def upload():
@@ -45,6 +44,7 @@ def upload():
     topic = request.form['topic']
     task = luigi_task.apply_async([path_file, topic])
     return jsonify({'task_id': task.id})
+
 
 @app.route('/upload_status/<task_id>')
 def upload_status(task_id):
@@ -58,6 +58,7 @@ def upload_status(task_id):
     else:
         response = {'state': task.state, 'status': str(task.info)}
     return jsonify(response)
+
 
 if __name__ == '__main__':
     app.run(debug = True, host = '0.0.0.0', port = 5000)
