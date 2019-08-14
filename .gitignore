@@ -5,3 +5,4 @@
 !*emotion.pb
 !*sentiment.pb
 *.DS_Store
+*ipynb_checkpoints

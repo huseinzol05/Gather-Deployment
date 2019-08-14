@@ -1,0 +1,176 @@
+version: '2.3'
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.2
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    networks:
+      - backend
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.2
+    ports:
+      - "5601:5601"
+    networks:
+      - backend
+
+  zookeeper:
+    restart: always
+    container_name: zookeeper
+    build:
+      context: kafka
+    command: /code/kafka_2.11-2.0.0/bin/zookeeper-server-start.sh /code/kafka_2.11-2.0.0/config/zookeeper.properties
+    networks:
+      - backend
+    ports:
+      - '2181:2181'
+  kafka:
+    links:
+      - zookeeper
+    depends_on:
+      - zookeeper
+    restart: always
+    build:
+      context: kafka
+    volumes:
+      - './kafka-storage:/tmp/kafka-logs'
+    command: /code/kafka_2.11-2.0.0/bin/kafka-server-start.sh /code/kafka_2.11-2.0.0/config/server.properties
+    networks:
+      - backend
+    ports:
+      - '9092:9092'
+    container_name: kafka
+  kafka_manager:
+    image: hlebalbau/kafka-manager:stable
+    links:
+      - kafka
+      - zookeeper
+    depends_on:
+      - kafka
+      - zookeeper
+    ports:
+      - 6006:9000
+    environment:
+      ZK_HOSTS: "zookeeper:2181"
+      APPLICATION_SECRET: "random-secret"
+    command: -Dpidfile.path=/dev/null
+    networks:
+      - backend
+    container_name: kafka-manager
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:5.1.0
+    ports:
+      - 8083:8082
+    links:
+      - kafka
+      - zookeeper
+    depends_on:
+      - kafka
+      - zookeeper
+    environment:
+      KAFKA_REST_HOST_NAME: rest-proxy
+      KAFKA_REST_BOOTSTRAP_SERVERS: 'http://kafka:9092'
+      KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
+    networks:
+      - backend
+    container_name: kafka-rest
+  tweepy-producer:
+    links:
+      - kafka
+      - zookeeper
+    depends_on:
+      - kafka
+      - zookeeper
+    build:
+      context: tweepy
+    environment:
+      consumer_key: ''
+      consumer_secret: ''
+      access_token: ''
+      access_token_secret: ''
+      PYTHONUNBUFFERED: 0
+    networks:
+      - backend
+    container_name: tweepy-producer
+    command: python main.py
+
+  nimbus:
+    build: storm
+    networks:
+      - backend
+    container_name: nimbus
+    command: storm nimbus
+    depends_on:
+        - zookeeper
+    links:
+        - zookeeper
+    restart: always
+    ports:
+        - 6627:6627
+    volumes:
+        - ./storm/conf:/conf
+  supervisor:
+    build: storm
+    networks:
+      - backend
+    container_name: supervisor
+    command: storm supervisor
+    depends_on:
+        - nimbus
+        - zookeeper
+    links:
+        - nimbus
+        - zookeeper
+    restart: always
+    volumes:
+        - ./storm/conf:/conf
+  sui:
+    build: storm
+    networks:
+      - backend
+    container_name: sui
+    command: storm ui
+    depends_on:
+        - nimbus
+        - zookeeper
+    links:
+        - nimbus
+        - zookeeper
+    restart: always
+    ports:
+        - "8085:8080"
+    volumes:
+        - ./storm/conf:/conf
+  streamparse:
+    build: streamparse
+    networks:
+      - backend
+    container_name: streamparse
+    command: /entrypoint.sh
+    depends_on:
+        - zookeeper
+        - nimbus
+        - supervisor
+        - sui
+    links:
+        - zookeeper
+        - nimbus
+        - supervisor
+        - sui
+    restart: always
+    volumes:
+        - ./streamparse/tasks:/tasks
+
+
+networks:
+  backend:
+    external:
+      name: backend_default

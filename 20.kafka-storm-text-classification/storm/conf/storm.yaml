@@ -1,0 +1,13 @@
+storm.zookeeper.servers:
+    - "zookeeper"
+
+nimbus.seeds : ["nimbus"]
+supervisor.worker.timeout.secs: 300
+
+storm.log.dir: "/logs"
+storm.local.dir: "/data"
+
+supervisor.slots.ports:
+    - 6700
+    - 6701
+    - 6702

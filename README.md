@@ -22,6 +22,7 @@ Gather how to deploy tensorflow models as much I can
 17. Luigi scheduler with Hadoop for Massive text classification
 18. Luigi scheduler with Distributed Celery for Massive text classification
 19. Airflow scheduler with elasticsearch for Massive text classification using Flask
+20. Text classification using Apache Kafka + Apache Storm
 
 ## Technology used
 
@@ -38,6 +39,7 @@ Gather how to deploy tensorflow models as much I can
 11. [Luigi Spotify](https://luigi.readthedocs.io/en/stable/index.html)
 12. [Airflow](https://airflow.apache.org/)
 13. [Elastic search](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)
+14. [Apache Storm](https://storm.apache.org/)
 
 ## Printscreen
 
