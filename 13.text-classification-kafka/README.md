@@ -37,6 +37,4 @@ python3 app.py
 ['negative', 'negative', 'positive', 'positive', 'negative']
 ```
 
-I tried to implement Kafka-manager developed by Yahoo, but seems some of `jar` cannot download.
-
 ![alt text](supervisord.png)

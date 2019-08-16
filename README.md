@@ -3,26 +3,26 @@ Gather how to deploy tensorflow models as much I can
 
 ## Covered
 
-1. Object Detection using Flask SocketIO for WebRTC
-2. Object Detection using Flask SocketIO for opencv
-3. Speech streaming using Flask SocketIO
-4. Classification using Flask + Gunicorn
-5. Classification using TF Serving
-6. Inception Classification using Flask SocketIO
-7. Object Detection using Flask + opencv
-8. Face-detection using Flask SocketIO for opencv
-9. Face-detection for opencv
-10. Inception with Flask using Docker
-11. Multiple Inception with Flask using EC2 Docker Swarm + Nginx load balancer
-12. Text classification using Hadoop streaming MapReduce
-13. Text classification using Kafka
-14. Text classification on Distributed TF using Flask + Gunicorn + Eventlet
-15. Text classification using Tornado + Gunicorn
-16. Celery with Hadoop for Massive text classification using Flask
-17. Luigi scheduler with Hadoop for Massive text classification
-18. Luigi scheduler with Distributed Celery for Massive text classification
-19. Airflow scheduler with elasticsearch for Massive text classification using Flask
-20. Text classification using Apache Kafka + Apache Storm
+1. Object Detection. Flask SocketIO + WebRTC
+2. Object Detection. Flask SocketIO + opencv
+3. Speech streaming. Flask SocketIO
+4. Text classification. Flask + Gunicorn
+5. Image classification. TF Serving
+6. Image Classification using Inception. Flask SocketIO
+7. Object Detection. Flask + opencv
+8. Face-detection using MTCNN. Flask SocketIO + opencv
+9. Face-detection using MTCNN. opencv
+10. Image classification using Inception. Flask + Docker
+11. Image classification using Inception. Flask + EC2 Docker Swarm + Nginx load balancer
+12. Text classification. Hadoop streaming MapReduce
+13. Text classification. Kafka
+14. Text classification. Distributed TF using Flask + Gunicorn + Eventlet
+15. Text classification. Tornado + Gunicorn
+16. Text classification. Flask + Celery + Hadoop
+17. Text classification. Luigi scheduler + Hadoop
+18. Text classification. Luigi scheduler + Distributed Celery
+19. Text classification. Airflow scheduler + elasticsearch + Flask
+20. Text classification. Apache Kafka + Apache Storm
 
 ## Technology used
 
