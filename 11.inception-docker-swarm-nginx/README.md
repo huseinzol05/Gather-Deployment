@@ -7,7 +7,7 @@ env
 # make sure you have AWS_ACCESS_KEY_ID=
 ```
 
-2. Create 3 EC2 VPS. I live in Malaysia, so I spawned them at Singapore. You can supported regions [here](https://docs.aws.amazon.com/general/latest/gr/rande.html).
+2. Create 3 EC2 VPS. I live in Malaysia, so I spawned them at Singapore. You can check supported regions [here](https://docs.aws.amazon.com/general/latest/gr/rande.html).
 ```bash
 docker-machine create --driver amazonec2 --amazonec2-region ap-southeast-1 tf-master
 docker-machine create --driver amazonec2 --amazonec2-region ap-southeast-1 tf-node-1
@@ -206,3 +206,5 @@ sudo docker stack deploy --compose-file docker-compose.yml inception
 10. Try to request,
 ```bash
 curl -POST -F file=@husein-tiger.jpg http://ec2.compute.amazonaws.com
+# replace with your actual EC2 ip
+```
