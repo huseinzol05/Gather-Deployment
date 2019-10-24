@@ -1,3 +1,0 @@
-Host *
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no

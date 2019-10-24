@@ -1,0 +1,9 @@
+version: '2.3'
+services:
+  dask:
+    build:
+      context: .
+      target: base
+    command: python3 app.py
+    volumes:
+      - .:/app

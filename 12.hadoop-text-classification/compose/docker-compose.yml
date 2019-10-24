@@ -1,0 +1,18 @@
+version: '2.3'
+services:
+  tf-hadoop:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    volumes:
+      - ../:/app
+    ports:
+      - '8088:8088'
+      - '9000:9000'
+      - '9870:9870'
+      - '9864:9864'
+      - '19888:19888'
+      - '8042:8042'

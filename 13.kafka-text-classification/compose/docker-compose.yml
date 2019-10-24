@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  kafka-tensorflow:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '2181:2181'
+      - '9092:9092'
+      - '9000:9000'

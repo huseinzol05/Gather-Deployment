@@ -23,6 +23,7 @@ Gather how to deploy tensorflow models as much I can
 18. Text classification. Luigi scheduler + Distributed Celery
 19. Text classification. Airflow scheduler + elasticsearch + Flask
 20. Text classification. Apache Kafka + Apache Storm
+21. Text classification. Dask
 
 ## Technology used
 
@@ -40,6 +41,7 @@ Gather how to deploy tensorflow models as much I can
 12. [Airflow](https://airflow.apache.org/)
 13. [Elastic search](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)
 14. [Apache Storm](https://storm.apache.org/)
+15. [Dask](https://dask.org/)
 
 ## Printscreen
 
