@@ -45,7 +45,7 @@ Gather how to deploy tensorflow models as much I can
 
 ## Printscreen
 
-![alt text](1.object-detection-flasksocketio-webrtc/screenshot.png)
+![alt text](1.flasksocketio-webrtc-object-detection/screenshot.png)
 
 **All folders contain print screens, logs and instructions on how to start.**
 
