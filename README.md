@@ -1,55 +1,102 @@
-# Gather-Tensorflow-Serving
-Gather how to deploy tensorflow models as much I can
+# Gather-Deployment
 
-## Covered
+Gathers scalable tensorflow and infrastructure deployment, reusable purpose in the future.
 
-1. Object Detection. Flask SocketIO + WebRTC
-2. Object Detection. Flask SocketIO + opencv
-3. Speech streaming. Flask SocketIO
-4. Text classification. Flask + Gunicorn
-5. Image classification. TF Serving
-6. Image Classification using Inception. Flask SocketIO
-7. Object Detection. Flask + opencv
-8. Face-detection using MTCNN. Flask SocketIO + opencv
-9. Face-detection using MTCNN. opencv
-10. Image classification using Inception. Flask + Docker
-11. Image classification using Inception. Flask + EC2 Docker Swarm + Nginx load balancer
-12. Text classification. Hadoop streaming MapReduce
-13. Text classification. Kafka
-14. Text classification. Distributed TF using Flask + Gunicorn + Eventlet
-15. Text classification. Tornado + Gunicorn
-16. Text classification. Flask + Celery + Hadoop
-17. Text classification. Luigi scheduler + Hadoop
-18. Text classification. Luigi scheduler + Distributed Celery
-19. Text classification. Airflow scheduler + elasticsearch + Flask
-20. Text classification. Apache Kafka + Apache Storm
-21. Text classification. Dask
+## Tensorflow deployment
 
-## Technology used
+#### List
 
-1. [Flask](http://flask.pocoo.org/)
-2. [Flask SocketIO](https://flask-socketio.readthedocs.io/)
-3. [Gunicorn](https://gunicorn.org/)
-4. [Eventlet](http://eventlet.net/)
-5. [Tornado](https://www.tornadoweb.org/)
-6. [Celery](http://www.celeryproject.org/)
-7. [Hadoop](https://hadoop.apache.org/)
-8. [Kafka](https://kafka.apache.org/)
-9. [Nginx](https://www.nginx.com/)
-10. [WebRTC](https://webrtc.org/)
-11. [Luigi Spotify](https://luigi.readthedocs.io/en/stable/index.html)
-12. [Airflow](https://airflow.apache.org/)
-13. [Elastic search](https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html)
-14. [Apache Storm](https://storm.apache.org/)
-15. [Dask](https://dask.org/)
+1. Object Detection. _Flask SocketIO + WebRTC_
 
-## Printscreen
+Stream from webcam using WebRTC -> Flask SocketIO to detect objects -> WebRTC -> Website.
 
-![alt text](1.flasksocketio-webrtc-object-detection/screenshot.png)
+2. Object Detection. _Flask SocketIO + opencv_
+
+Stream from OpenCV -> Flask SocketIO to detect objects -> OpenCV.
+
+3. Speech streaming. _Flask SocketIO_
+
+Stream speech from microphone -> Flask SocketIO to do realtime speech recognition.
+
+4. Text classification. _Flask + Gunicorn_
+
+Serve Tensorflow text model using Flask multiworker + Gunicorn.
+
+5. Image classification. _TF Serving_
+
+Serve image classification model using TF Serving.
+
+6. Image Classification using Inception. _Flask SocketIO_
+
+Stream image using SocketIO -> Flask SocketIO to classify.
+
+7. Object Detection. _Flask + opencv_
+
+Webcam -> Opencv -> Flask -> web dashboard.
+
+8. Face-detection using MTCNN. _Flask SocketIO + opencv_
+
+Stream from OpenCV -> Flask SocketIO to detect faces -> OpenCV.
+
+9. Face-detection using MTCNN. _opencv_
+
+Webcam -> Opencv.
+
+10. Image classification using Inception. _Flask + Docker_
+
+Serve Tensorflow image model using Flask multiworker + Gunicorn on Docker container.
+
+11. Image classification using Inception. _Flask + EC2 Docker Swarm + Nginx load balancer_
+
+Serve inception on multiple AWS EC2, scale using Docker Swarm, balancing using Nginx.
+
+12. Text classification. _Hadoop streaming MapReduce_
+
+Batch processing to classify texts using Tensorflow text model on Hadoop streaming MapReduce.
+
+13. Text classification. _Kafka_
+
+Stream text to Kafka producer and classify using Kafka consumer.
+
+14. Text classification. _Distributed TF using Flask + Gunicorn + Eventlet_
+
+Serve text model on multiple machines using Distributed TF + Flask + Gunicorn + Eventlet. Means that, Distributed TF will split a single neural network model to multiple machines to do feed-forward.
+
+15. Text classification. _Tornado + Gunicorn_
+
+Serve Tensorflow text model using Tornado + Gunicorn.
+
+16. Text classification. _Flask + Celery + Hadoop_
+
+Submit large texts using Flask, signal queue celery job to process using Hadoop, delay lazy distribution.
+
+17. Text classification. _Luigi scheduler + Hadoop_
+
+Submit large texts on Luigi scheduler, run Hadoop inside Luigi, event based lazy distribution.
+
+18. Text classification. _Luigi scheduler + Distributed Celery_
+
+Submit large texts on Luigi scheduler, run Hadoop inside Luigi, delay processing.
+
+19. Text classification. _Airflow scheduler + elasticsearch + Flask_
+
+Event based processing using Airflow, store inside elasticsearch, serve it using Flask.
+
+20. Text classification. _Apache Kafka + Apache Storm_
+
+Stream from twitter -> Kafka Producer -> Apache Storm, to do distributed minibatch realtime processing.
+
+21. Text classification. _Dask_
+
+Batch processing to classify texts using Tensorflow text model on Dask.
+
+#### Printscreen
+
+<img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="50%">
 
 **All folders contain print screens, logs and instructions on how to start.**
 
-## Notes
+#### Notes
 
 1. Deploy them on a server, change `local` in code snippets to your own IP.
 2. WebRTC chrome only can tested on HTTPS server.
