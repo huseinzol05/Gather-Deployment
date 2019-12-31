@@ -91,6 +91,14 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 -   Batch processing to classify texts using Tensorflow text model on Dask.
 
+22. Text classification. _Pyspark_
+
+-   Batch processing to classify texts using Tensorflow text model on Pyspark.
+
+23. Text classification. _Pyspark streaming + Kafka_
+
+-   Stream texts to Kafka Producer -> Pyspark Streaming, to do minibatch realtime processing.
+
 ### Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="50%">

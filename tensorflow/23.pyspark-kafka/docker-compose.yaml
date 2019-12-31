@@ -1,0 +1,74 @@
+version: "2.3"
+services:
+  master:
+    build:
+      context: build
+    command: bash /app/cluster.sh
+    volumes:
+      - type: volume
+        source: cluster-data
+        target: /home/data
+      - "./notebooks:/notebooks"
+    environment:
+      - MASTER_PORT_7077_TCP_ADDR=master
+      - MASTER_PORT_7077_TCP_PORT=7077
+    ports:
+      - "8080:8080"
+      - "8089:8089"
+      - "7077:7077"
+      - "9000:9000"
+    container_name: master
+  slave:
+    build:
+      context: build
+    command: bash -c "/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker master:7077"
+    environment:
+      - MASTER_PORT_7077_TCP_ADDR=master
+      - MASTER_PORT_7077_TCP_PORT=7077
+    volumes:
+      - type: volume
+        source: cluster-data
+        target: /home/data
+    depends_on:
+      - master
+    links:
+      - master
+    scale: 2
+
+  zookeeper:
+    restart: always
+    container_name: zookeeper
+    build:
+      context: kafka
+      target: base
+    command: /code/kafka_2.11-2.4.0/bin/zookeeper-server-start.sh /code/kafka_2.11-2.4.0/config/zookeeper.properties
+
+  kafka:
+    links:
+      - zookeeper
+    depends_on:
+      - zookeeper
+    restart: always
+    build:
+      context: kafka
+      target: base
+    command: /code/kafka_2.11-2.4.0/bin/kafka-server-start.sh /code/kafka_2.11-2.4.0/config/server.properties
+    ports:
+      - "9092:9092"
+    container_name: kafka
+
+  producer:
+    links:
+      - kafka
+    depends_on:
+      - kafka
+    build:
+      context: producer
+      target: base
+    command: python app.py
+    container_name: producer
+    environment:
+      - PYTHONUNBUFFERED=0
+
+volumes:
+  cluster-data:

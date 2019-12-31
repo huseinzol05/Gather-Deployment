@@ -6,3 +6,5 @@
 !*sentiment.pb
 *.DS_Store
 *ipynb_checkpoints
+*supervisord.log
+*supervisord.pid
