@@ -2,13 +2,16 @@
 
 Gathers scalable tensorflow and infrastructure deployment, reusable purpose in the future.
 
+## Table of contents
+  * [Tensorflow deployment](#tensorflow-deployment)
+
 ## Tensorflow deployment
 
-#### List
+### List
 
 1. Object Detection. _Flask SocketIO + WebRTC_
 
-Stream from webcam using WebRTC -> Flask SocketIO to detect objects -> WebRTC -> Website.
+    -   Stream from webcam using WebRTC -> Flask SocketIO to detect objects -> WebRTC -> Website.
 
 2. Object Detection. _Flask SocketIO + opencv_
 
@@ -90,13 +93,13 @@ Stream from twitter -> Kafka Producer -> Apache Storm, to do distributed minibat
 
 Batch processing to classify texts using Tensorflow text model on Dask.
 
-#### Printscreen
+### Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="50%">
 
 **All folders contain print screens, logs and instructions on how to start.**
 
-#### Notes
+### Notes
 
 1. Deploy them on a server, change `local` in code snippets to your own IP.
 2. WebRTC chrome only can tested on HTTPS server.
