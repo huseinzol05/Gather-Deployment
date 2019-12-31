@@ -9,7 +9,7 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 1. Object Detection. _Flask SocketIO + WebRTC_
 
-    -   Stream from webcam using WebRTC -> Flask SocketIO to detect objects -> WebRTC -> Website.
+-   Stream from webcam using WebRTC -> Flask SocketIO to detect objects -> WebRTC -> Website.
 
 2. Object Detection. _Flask SocketIO + opencv_
 
