@@ -53,7 +53,7 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 12. Text classification. _Hadoop streaming MapReduce_
 
--   Batch processing to classify texts using Tensorflow text model on Hadoop streaming MapReduce.
+-   Batch processing to classify texts using Tensorflow text model on Hadoop MapReduce.
 
 13. Text classification. _Kafka_
 
@@ -69,11 +69,11 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 16. Text classification. _Flask + Celery + Hadoop_
 
--   Submit large texts using Flask, signal queue celery job to process using Hadoop, delay lazy distribution.
+-   Submit large texts using Flask, signal queue celery job to process using Hadoop, delay Hadoop MapReduce.
 
 17. Text classification. _Luigi scheduler + Hadoop_
 
--   Submit large texts on Luigi scheduler, run Hadoop inside Luigi, event based lazy distribution.
+-   Submit large texts on Luigi scheduler, run Hadoop inside Luigi, event based Hadoop MapReduce.
 
 18. Text classification. _Luigi scheduler + Distributed Celery_
 
@@ -81,7 +81,7 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 19. Text classification. _Airflow scheduler + elasticsearch + Flask_
 
--   Event based processing using Airflow, store inside elasticsearch, serve it using Flask.
+-   Scheduling based processing using Airflow, store inside elasticsearch, serve it using Flask.
 
 20. Text classification. _Apache Kafka + Apache Storm_
 
@@ -98,6 +98,14 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 23. Text classification. _Pyspark streaming + Kafka_
 
 -   Stream texts to Kafka Producer -> Pyspark Streaming, to do minibatch realtime processing.
+
+24. Text classification. _PyFlink + Kafka_
+
+-   Stream texts to Kafka Producer -> Flink streaming, to do distributed minibatch realtime processing.
+
+25. Text classification. _Streamz + Dask + Kafka_
+
+-   Stream texts to Kafka Producer -> Streamz ->, to do minibatch realtime processing.
 
 ### Printscreen
 
