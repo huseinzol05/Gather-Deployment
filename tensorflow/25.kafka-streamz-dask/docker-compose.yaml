@@ -10,6 +10,8 @@ services:
     ports:
       - "8786:8786"
       - "8787:8787"
+    volumes:
+      - "./notebooks:/notebooks"
 
   worker:
     links:
@@ -20,6 +22,8 @@ services:
       target: base
     command: dask-worker dask:8786
     scale: 2
+    volumes:
+      - "./notebooks:/notebooks"
 
   jupyter:
     links:
