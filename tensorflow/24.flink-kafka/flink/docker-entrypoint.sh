@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ################################################################################
 #  Licensed to the Apache Software Foundation (ASF) under one
@@ -22,6 +22,7 @@
 JOB_MANAGER_RPC_ADDRESS=${JOB_MANAGER_RPC_ADDRESS:-$(hostname -f)}
 ###
 
+echo "$1"
 if [ "$1" == "--help" -o "$1" == "-h" ]; then
     echo "Usage: $(basename $0) (jobmanager|taskmanager)"
     exit 0

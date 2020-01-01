@@ -1,38 +1,48 @@
-FROM ubuntu:18.04 as base
+FROM ubuntu:18.04 AS base
 
-ARG PYTHON_VERSION=3.6
+ENV PYTHONUNBUFFERED=1
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+ENV KM_VERSION=1.2.7
+ENV JMX_PORT=9999
 
 RUN apt-get update && apt-get install -y \
-    openjdk-8-jdk \
-    wget bzip2 \
+    python3 \
     python3-pip \
-    maven
+    python3-wheel \
+    openjdk-8-jdk \
+    wget \
+    supervisor
 
-ENV PYTHON_VERSION $PYTHON_VERSION
+# Flink environment variables
+ENV FLINK_INSTALL_PATH=/opt
+ENV FLINK_HOME $FLINK_INSTALL_PATH/flink
+ENV PATH $PATH:$FLINK_HOME/bin
 
-RUN git clone https://github.com/apache/flink.git
+# flink-dist can point to a directory or a tarball on the local system
+ENV flink_dist=flink-1.9.1
 
-WORKDIR /flink
+RUN wget https://storage.googleapis.com/netcore-csv/${flink_dist}-bin-scala_2.11.tgz
 
-RUN git fetch origin release-1.9
+RUN tar -zxf ${flink_dist}-bin-scala_2.11.tgz
 
-RUN git checkout -b release-1.9 origin/release-1.9
+RUN wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop2-uber/2.8.3-1.8.0/flink-shaded-hadoop2-uber-2.8.3-1.8.0.jar
+ENV hadoop_jar=flink-shaded-hadoop2-uber-2.8.3-1.8.0.jar
 
-RUN mvn clean install -DskipTests -Dfast
+# Install build dependencies and flink
+RUN mkdir $FLINK_HOME
+RUN cp $hadoop_jar $FLINK_HOME/
+RUN cp -r ${flink_dist}/* $FLINK_HOME/
 
-WORKDIR /flink/flink-python
+RUN pip3 install tensorflow
 
-RUN python3 setup.py sdist bdist_wheel
+COPY docker-entrypoint.sh /
 
-RUN pip3 install dist/*.tar.gz
+ENV PYFLINK_PYTHON python3
 
-RUN pip3 list|grep flink
+RUN ln -sf /usr/bin/python3 /usr/bin/python && \
+    ln -sf /usr/bin/pip3 /usr/bin/pip
 
-ENV FLINK_HOME=/flink/build-target
-
-USER flink
 EXPOSE 8081 6123
-ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
 CMD ["--help"]

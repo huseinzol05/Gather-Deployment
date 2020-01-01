@@ -1,39 +1,63 @@
+import logging
+import os
+import shutil
 import sys
+import tempfile
+import tensorflow as tf
 
-from flink.plan.Environment import get_environment
-from flink.plan.Constants import WriteMode
-from flink.functions.GroupReduceFunction import GroupReduceFunction
+from pyflink.dataset import ExecutionEnvironment
+from pyflink.table import BatchTableEnvironment, TableConfig
+from pyflink.table.descriptors import FileSystem, OldCsv, Schema
+from pyflink.table.types import DataTypes
 
 
-class Adder(GroupReduceFunction):
-    def reduce(self, iterator, collector):
-        count, word = iterator.next()
-        count += sum([x[0] for x in iterator])
-        collector.collect((count, word))
+def word_count():
+    content = (
+        'line Licensed to the Apache Software Foundation ASF under one '
+        'line or more contributor license agreements See the NOTICE file '
+        'line distributed with this work for additional information '
+        'line regarding copyright ownership The ASF licenses this file '
+        'to you under the Apache License Version the '
+        'License you may not use this file except in compliance '
+        'with the License'
+    )
+
+    t_config = TableConfig()
+    env = ExecutionEnvironment.get_execution_environment()
+    env.set_parallelism(1)
+    t_env = BatchTableEnvironment.create(env, t_config)
+
+    # register Results table in table environment
+    tmp_dir = tempfile.gettempdir()
+    result_path = '/files/output.csv'
+
+    logging.info('Results directory: %s', result_path)
+
+    t_env.connect(FileSystem().path(result_path)).with_format(
+        OldCsv()
+        .field_delimiter(',')
+        .field('word', DataTypes.STRING())
+        .field('count', DataTypes.BIGINT())
+    ).with_schema(
+        Schema()
+        .field('word', DataTypes.STRING())
+        .field('count', DataTypes.BIGINT())
+    ).register_table_sink(
+        'Results'
+    )
+
+    elements = [(word, 1) for word in content.split(' ')]
+
+    t_env.from_elements(elements, ['word', 'count']).group_by('word').select(
+        'word, count(1) as count'
+    ).insert_into('Results')
+
+    t_env.execute('word_count')
 
 
 if __name__ == '__main__':
-    # get the base path out of the runtime params
-    base_path = sys.argv[0]
-
-    # we have to hard code in the path to the output because of gotcha detailed in readme
-    output_file = 'file://' + base_path + '/word_count/out.txt'
-
-    # set up the environment with a single string as the environment data
-    env = get_environment()
-    data = env.from_elements(
-        "Who's there? I think I hear them. Stand, ho! Who's there?"
+    logging.basicConfig(
+        stream = sys.stdout, level = logging.INFO, format = '%(message)s'
     )
 
-    # we first map each word into a (1, word) tuple, then flat map across that, and group by the key, and sum
-    # aggregate on it to get (count, word) tuples, then pretty print that out to a file.
-    data.flat_map(
-        lambda x, c: [(1, word) for word in x.lower().split()]
-    ).group_by(1).reduce_group(Adder(), combinable = True).map(
-        lambda y: 'Count: %s Word: %s' % (y[0], y[1])
-    ).write_text(
-        output_file, write_mode = WriteMode.OVERWRITE
-    )
-
-    # execute the plan locally.
-    env.execute(local = True)
+    word_count()
