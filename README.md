@@ -99,13 +99,13 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 -   Stream texts to Kafka Producer -> Pyspark Streaming, to do minibatch realtime processing.
 
-24. Text classification. _PyFlink + Kafka_
+24. Text classification. _PyFlink_
 
--   Stream texts to Kafka Producer -> Flink streaming, to do distributed minibatch realtime processing.
+-   Batch processing to classify texts using Tensorflow text model on Flink batch processing.
 
 25. Text classification. _Streamz + Dask + Kafka_
 
--   Stream texts to Kafka Producer -> Streamz ->, to do minibatch realtime processing.
+-   Stream texts to Kafka Producer -> Streamz -> Dask, to do minibatch realtime processing.
 
 ### Printscreen
 

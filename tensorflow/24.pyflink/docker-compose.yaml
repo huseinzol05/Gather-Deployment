@@ -1,0 +1,31 @@
+version: "2.1"
+services:
+  jobmanager:
+    build:
+      context: flink
+    expose:
+      - "6123"
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    container_name: flink
+    volumes:
+      - "./notebooks:/notebooks"
+
+  taskmanager:
+    build:
+      context: flink
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    volumes:
+      - "./notebooks:/notebooks"
+    links:
+      - "jobmanager:jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
