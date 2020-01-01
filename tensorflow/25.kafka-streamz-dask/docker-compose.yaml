@@ -1,0 +1,71 @@
+version: "2.3"
+services:
+  dask:
+    restart: always
+    container_name: dask
+    build:
+      context: build
+      target: base
+    command: dask-scheduler --host 0.0.0.0
+    ports:
+      - "8786:8786"
+      - "8787:8787"
+
+  worker:
+    links:
+      - dask
+    restart: always
+    build:
+      context: build
+      target: base
+    command: dask-worker dask:8786
+    scale: 2
+
+  jupyter:
+    links:
+      - dask
+    container_name: jupyter
+    restart: always
+    build:
+      context: build
+      target: base
+    command: jupyter notebook --ip=0.0.0.0 --port=8089 --allow-root
+    ports:
+      - "8089:8089"
+    volumes:
+      - "./notebooks:/notebooks"
+
+  zookeeper:
+    restart: always
+    container_name: zookeeper
+    build:
+      context: kafka
+      target: base
+    command: /code/kafka_2.11-2.4.0/bin/zookeeper-server-start.sh /code/kafka_2.11-2.4.0/config/zookeeper.properties
+
+  kafka:
+    links:
+      - zookeeper
+    depends_on:
+      - zookeeper
+    restart: always
+    build:
+      context: kafka
+      target: base
+    command: /code/kafka_2.11-2.4.0/bin/kafka-server-start.sh /code/kafka_2.11-2.4.0/config/server.properties
+    ports:
+      - "9092:9092"
+    container_name: kafka
+
+  producer:
+    links:
+      - kafka
+    depends_on:
+      - kafka
+    build:
+      context: producer
+      target: base
+    command: python app.py
+    container_name: producer
+    environment:
+      - PYTHONUNBUFFERED=0
