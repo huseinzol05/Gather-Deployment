@@ -8,6 +8,8 @@ When we have huge requests in a short time, 1-size batch vector operation become
 
 We can achieve this using [Streamz](https://streamz.readthedocs.io/en/latest/core.html) and [water-healer](https://github.com/huseinzol05/water-healer), can check [model.py](model.py).
 
+Basically, **change concurrent requests into mini-batch realtime processing to speed up feed-forward**.
+
 <img alt="logo" width="40%" src="batch.png">
 
 ## How-to

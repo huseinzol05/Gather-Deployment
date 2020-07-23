@@ -107,6 +107,10 @@ Gathers scalable tensorflow and infrastructure deployment, reusable purpose in t
 
 -   Stream texts to Kafka Producer -> Streamz -> Dask, to do minibatch realtime processing.
 
+26. Text classification. _FastAPI + Streamz + Water Healer_
+
+-   Change concurrent requests into mini-batch realtime processing to speed up text classification.
+
 ### Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="50%">
