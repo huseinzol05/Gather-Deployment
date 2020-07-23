@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  api:
+    build:
+      context: .
+    container_name: api
+    environment:
+      - PORT=8080
+      - WORKERS_PER_CORE=2
+      - WORKER_CLASS=uvicorn.workers.UvicornH11Worker
+    volumes:
+      - "./app:/app"
+    ports:
+      - "8080:8080"
+    command: gunicorn -w 2 -t 180 -k uvicorn.workers.UvicornWorker app.main:app
