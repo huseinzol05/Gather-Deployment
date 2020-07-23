@@ -88,4 +88,21 @@ Wall time: 767 ms
 
 batch only took 767 ms while one-by-one took 5.07 seconds.
 
+## Stress-test
+
+Requests,
+
+```python
+x = [1, 10, 25, 50, 100, 200, 500]
+# 1 concurrent, 10 concurrent, and so on.
+```
+
+Normal concurrent ASGI,
+
+![alt text](download-element.png)
+
+Normal concurrent ASGI + Streamz + Waterhealer
+
+![alt text](download-batch.png)
+
 **Again, make sure you scale to GPU / TPU if you have massive concurrent requests, CPU can be really slow on big vectors.**

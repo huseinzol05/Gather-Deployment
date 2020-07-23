@@ -54,7 +54,7 @@ source.partition_time(global_wait).map(classify).sink(map_output)
 
 async def get(id):
     while True:
-        await asyncio.sleep(0.001)
+        await asyncio.sleep(0.01)
         if id in outputs:
             return outputs.pop(id)
 
