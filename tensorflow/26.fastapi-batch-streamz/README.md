@@ -87,3 +87,5 @@ Wall time: 767 ms
 ```
 
 batch only took 767 ms while one-by-one took 5.07 seconds.
+
+**Again, make sure you scale to GPU / TPU if you have massive concurrent requests, CPU can be really slow on big vectors.**
