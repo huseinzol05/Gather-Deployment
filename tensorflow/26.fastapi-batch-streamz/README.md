@@ -6,7 +6,7 @@ Most of machine learning models are vector based, so we can calculate N-size of 
 
 When we have huge requests in a short time, 1-size batch vector operation become expensive due to big size of 1-size batch. So in here, we want to groupby multiple 1-size batch into N-size batch and do single vector operation and returned back to N users.
 
-We can achieve this using [Streamz](https://streamz.readthedocs.io/en/latest/core.html) and [water-healer](https://github.com/huseinzol05/water-healer), can check [model.py](model.py).
+We can achieve this using [Streamz](https://streamz.readthedocs.io/en/latest/core.html) and [water-healer](https://github.com/huseinzol05/water-healer), can check [app/model.py](app/model.py).
 
 Basically, **change concurrent requests into mini-batch realtime processing to speed up feed-forward**.
 
