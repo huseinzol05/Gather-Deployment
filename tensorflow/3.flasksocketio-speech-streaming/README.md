@@ -1,19 +1,22 @@
-## Installation
+## How-To
+
+1. Install dependencies,
+
 ```bash
 apt-get install portaudio19-dev
 pip3 install flask flask_socketio numpy SpeechRecognition pyaudio
 ```
 
-## How-To
+[client.py](client.py) is your microphone slave.
 
-`client.py` is your microphone slave.
+[server.py](client.py) is your server to process the speech. In this case, I use google Speech-to-Text.
 
-`server.py` is your server to process the speech. In this case, I use google Speech-to-Text.
+2. Run the server,
 
-1. Run the server,
 ```bash
 python3 server.py
 ```
+
 ```text
 127.0.0.1 - - [26/Oct/2018 12:40:12] "GET /socket.io/?t=1540528811038-30&EIO=3&transport=polling&sid=842d33cc0b354a7b8e631d519fc7d41a HTTP/1.1" 200 -
 127.0.0.1 - - [26/Oct/2018 12:40:13] "POST /socket.io/?t=1540528813056-33&EIO=3&transport=polling&sid=842d33cc0b354a7b8e631d519fc7d41a HTTP/1.1" 200 -
@@ -26,10 +29,12 @@ Client disconnected
 
 ```
 
-2. Run the client,
+3. Run the client,
+
 ```bash
 python3 client.py
 ```
+
 ```text
 ALSA lib pcm.c:2266:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
 ALSA lib pcm.c:2266:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.center_lfe

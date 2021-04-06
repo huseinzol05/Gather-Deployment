@@ -1,9 +1,15 @@
 # Gather-Deployment
 
-Gathers scalable tensorflow and infrastructure deployment, reusable purpose in the future.
+Gathers scalable tensorflow and Python infrastructure deployment, reusable purpose in the future, 100% Docker.
 
 ## Table of contents
+  * [Requirements](#Requirements)
   * [Tensorflow deployment](#tensorflow-deployment)
+
+## Requirements
+
+1. Docker
+2. Docker compose
 
 ## Tensorflow deployment
 

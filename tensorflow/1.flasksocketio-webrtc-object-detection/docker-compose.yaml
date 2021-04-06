@@ -1,0 +1,11 @@
+version: "2.1"
+services:
+  flask:
+    build:
+      context: .
+    ports:
+      - "5000:5000"
+    command: python3 app.py
+    container_name: flask
+    environment:
+      - PYTHONUNBUFFERED=1

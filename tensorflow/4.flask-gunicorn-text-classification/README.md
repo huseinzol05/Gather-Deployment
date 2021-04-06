@@ -1,10 +1,11 @@
-# Tensorflow-Serving-Comparison
+# how-to
 
 Compare time API request on Dynamic and Static Deep LSTM Recurrent Neural Network classifying POSITIVE or NEGATIVE for a text
 
 ## About
 
 dynamic graph
+
 ```python
 sess = tf.InteractiveSession()
 model = model.Model(num_layers, size_layer, vectors.shape[1], output_size, learning_rate)
@@ -15,6 +16,7 @@ saver.restore(sess, os.getcwd() + "/model-rnn-vector-huber.ckpt")
 ```
 
 static graph
+
 ```python
 g=load_graph('frozen_model.pb')
 x = g.get_tensor_by_name('import/Placeholder:0')
@@ -23,15 +25,18 @@ sess = tf.InteractiveSession(graph=g)
 ```
 
 Differences between those types:
+
 1. dynamic graph required model's code, static no need
 2. dynamic graph really easy to spawn, static need to specific which placeholder, variables need to freeze
 
 API for dynamic graph, api_dynamic.py
+
 ```python
 @app.route('/dynamic', methods = ['GET'])
 ```
 
 API for static graph, api_static.py
+
 ```python
 @app.route('/static', methods = ['GET'])
 ```
@@ -39,7 +44,8 @@ API for static graph, api_static.py
 
 ## How-to
 
-#### How to freeze a model, read sentiment-huber-freeze.ipynb
+#### How to freeze a model, read [sentiment-huber-freeze.ipynb](sentiment-huber-freeze.ipynb)
+
 ```python
 # only load Variables, placeholder for input, and our logits
 strings=','.join([n.name for n in tf.get_default_graph().as_graph_def().node if "Variable" in n.op or n.name.find('Placeholder') >= 0 or n.name.find('logits') == 0])
@@ -47,7 +53,8 @@ freeze_graph("", strings)
 g=load_graph('frozen_model.pb')
 ```
 
-#### How to initiate multi-workers using Gunicorn on top of flask, check comparison-request-gunicorn-dynamic.ipynb
+#### How to initiate multi-workers using Gunicorn on top of flask, check [comparison-request-gunicorn-dynamic.ipynb](comparison-request-gunicorn-dynamic.ipynb)
+
 ```bash
 bash run-gunicorn-dynamic.sh number_worker
 ```
@@ -63,7 +70,8 @@ gunicorn -w $NUM_WORKER -b $BIND_ADDR -p gunicorn.pid api_dynamic:app
 
 ## Results
 
-#### Spawn Comparison, comparison-request.ipynb
+#### Spawn Comparison, [comparison-request.ipynb](comparison-request.ipynb)
+
 ```text
 # for dynamic graph
 CPU times: user 816 ms, sys: 40 ms, total: 856 ms
@@ -75,6 +83,7 @@ Wall time: 75.8 ms
 ```
 
 #### Concurrent stress test
+
 ```text
 # Stress test 20 requests concurrently on dynamic graph
 thread 0, time taken 0.040708 s
@@ -130,6 +139,7 @@ time taken to run experiments 26.089081 s, average 5.217816 s
 ```
 
 #### Multi-workers comparison
+
 ![alt text](gunicorn/comparison.png)
 
 *It really depends on physical server specifications*

@@ -1,7 +1,5 @@
 ## How-to
 
-**Waiting for 1.10 Apache Flink official released**.
-
 1. Run docker compose,
 
 ```bash

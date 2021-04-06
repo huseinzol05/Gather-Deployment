@@ -20,9 +20,9 @@ ENV FLINK_HOME $FLINK_INSTALL_PATH/flink
 ENV PATH $PATH:$FLINK_HOME/bin
 
 # flink-dist can point to a directory or a tarball on the local system
-ENV flink_dist=flink-1.9.1
+ENV flink_dist=flink-1.12.2
 
-RUN wget https://storage.googleapis.com/netcore-csv/${flink_dist}-bin-scala_2.11.tgz
+RUN wget https://downloads.apache.org/flink/${flink_dist}/${flink_dist}-bin-scala_2.11.tgz
 
 RUN tar -zxf ${flink_dist}-bin-scala_2.11.tgz
 
@@ -34,9 +34,11 @@ RUN mkdir $FLINK_HOME
 RUN cp $hadoop_jar $FLINK_HOME/
 RUN cp -r ${flink_dist}/* $FLINK_HOME/
 
-RUN pip3 install tensorflow
+RUN pip3 install tensorflow==1.15 apache-flink jupyter
 
 COPY docker-entrypoint.sh /
+
+COPY supervisord.conf /
 
 ENV PYFLINK_PYTHON python3
 
@@ -45,7 +47,14 @@ RUN ln -sf /usr/bin/python3 /usr/bin/python && \
 
 WORKDIR /notebooks
 
+RUN jupyter notebook --generate-config
+
+RUN echo "" >> /root/.jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.token = ''" >> /root/.jupyter/jupyter_notebook_config.py
+
 COPY flink-conf.yaml /opt/flink/conf/
+
+RUN supervisord -c /supervisord.conf
 
 EXPOSE 8081 6123
 ENTRYPOINT ["bash", "/docker-entrypoint.sh"]
