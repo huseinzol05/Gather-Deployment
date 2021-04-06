@@ -20,7 +20,7 @@ Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To f
 1. Docker
 2. Docker compose
 
-## Tensorflow deployment
+## [Tensorflow deployment](tensorflow)
 
 1. Object Detection. _Flask SocketIO + WebRTC_
 
