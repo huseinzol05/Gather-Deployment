@@ -6,7 +6,7 @@ Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To f
   * [Requirements](#Requirements)
   * [Tensorflow deployment](#tensorflow-deployment)
   * [Basic Backend](#basic-backend)
-  * [Scaling-up Backend](#scaling-backend)]
+  * [Scaling-up Backend](#scaling-backend)
   * [Big data piping](#big-data-piping)
   * [Apache cluster](#apache-cluster)
   * [Unit test](#unit-test)
