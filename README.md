@@ -5,6 +5,8 @@ Gathers scalable tensorflow and Python infrastructure deployment, reusable purpo
 ## Table of contents
   * [Requirements](#Requirements)
   * [Tensorflow deployment](#tensorflow-deployment)
+  * [Printscreen](#printscreen)
+  * [Notes](#notes)
 
 ## Requirements
 
@@ -121,13 +123,13 @@ Batch processing to classify texts using Tensorflow text model on Flink batch pr
 
 Stream texts to Kafka Producer -> PyFlink Streaming, to do minibatch realtime processing.
 
-### Printscreen
+## Printscreen
 
-<img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="40%">
+<img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="30%">
 
 **All folders contain print screens, logs and instructions on how to start.**
 
-### Notes
+## Notes
 
 1. Deploy them on a server, change `local` in code snippets to your own IP.
 2. WebRTC chrome only can tested on HTTPS server.
