@@ -1,0 +1,8 @@
+#!/bin/sh
+
+service postgresql start
+su -c "psql -c \"CREATE ROLE root WITH LOGIN PASSWORD 'root' \"" postgres
+su -c "psql -c \"ALTER USER root WITH SUPERUSER \"" postgres
+createdb testdb
+psql -d testdb -f sample.sql
+bash eventlet.sh

@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  locust:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # flask
+      - '8089:8089' # locust
+      - '9000:9000'

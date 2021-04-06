@@ -1,0 +1,12 @@
+version: '2.3'
+services:
+  flask-elastic:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '9200:9200' # elastic
+      - '5000:5000' # flask

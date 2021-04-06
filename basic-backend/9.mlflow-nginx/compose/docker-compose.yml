@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+  mlflow:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # mlflow
+      - '80:80' # nginx
+    volumes:
+      - ..:/code

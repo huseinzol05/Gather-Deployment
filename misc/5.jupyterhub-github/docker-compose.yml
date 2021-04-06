@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  jupyterhub:
+    restart: always
+    build:
+      context: jupyterhub
+    networks:
+      - luigi-backend
+      - backend
+    command: bash start.sh
+    ports:
+      - '8000:8000'
+    container_name: jupyterhub
+    volumes:
+      - './jupyter:/home'

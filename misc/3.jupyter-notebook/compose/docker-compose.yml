@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  jupyter_notebook:
+    build:
+      context: ..
+      target: base
+    command: jupyter notebook --ip=0.0.0.0 --port=8080 --allow-root
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '8080:8080'
+    volumes:
+      - ..:/app

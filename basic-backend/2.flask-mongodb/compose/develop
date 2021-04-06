@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/usr/bin/mongod --fork --logpath /var/log/mongod.log
+bash eventlet.sh

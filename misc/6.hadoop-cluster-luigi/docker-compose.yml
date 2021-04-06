@@ -1,0 +1,52 @@
+version: '2.3'
+services:
+  hadoop-master:
+    build:
+      context: master
+      target: base
+    networks:
+      - hadoop
+    command: bash start-all.sh
+    environment:
+      PYTHONPATH: .
+    container_name: hadoop-master
+    volumes:
+      - ../:/app
+    ports:
+      - '8088:8088'
+      - '50070:50070'
+      - '8083:8082'
+      - '9000:9000'
+      - '9090:9090'
+      - '9870:9870'
+      - '9864:9864'
+      - '19888:19888'
+      - '8042:8042'
+
+  hadoop-slave1:
+    build:
+      context: slave
+      target: base
+    networks:
+      - hadoop
+    command: bash start-all.sh
+    container_name: hadoop-slave1
+    environment:
+      PYTHONPATH: .
+
+  hadoop-slave2:
+    build:
+      context: slave
+      target: base
+    networks:
+      - hadoop
+    command: bash start-all.sh
+    container_name: hadoop-slave2
+    environment:
+      PYTHONPATH: .
+
+
+networks:
+  hadoop:
+    external:
+      name: hadoop_default

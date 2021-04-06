@@ -1,0 +1,12 @@
+version: '2.3'
+services:
+  celery:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # flask
+      - '5555:5555'

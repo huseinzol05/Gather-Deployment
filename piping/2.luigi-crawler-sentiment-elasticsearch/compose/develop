@@ -1,0 +1,8 @@
+#!/bin/sh
+
+service elasticsearch start
+service kibana start
+supervisord -c supervisord.conf
+python3 download_nltk.py
+PYTHONPATH='.' luigi --module crawling Save_to_Elastic --issue 'isu najib razak' --year-start 2010 --year-end 2019 --limit 1000 --batch-size 10 --index 'news'
+python3 app.py

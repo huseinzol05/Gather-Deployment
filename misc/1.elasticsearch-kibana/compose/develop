@@ -1,0 +1,5 @@
+#!/bin/sh
+
+service elasticsearch start
+service kibana start
+python3 app.py

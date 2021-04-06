@@ -1,0 +1,5 @@
+#!/bin/sh
+
+service elasticsearch start
+service kibana start
+cerebro-0.8.1/bin/cerebro -Dhttp.port=6000 -Dhttp.address=0.0.0.0

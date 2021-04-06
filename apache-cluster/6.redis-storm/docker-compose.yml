@@ -1,0 +1,30 @@
+version: '2.3'
+
+services:
+    redis:
+        image: redis:5-alpine
+        container_name: redis
+        restart: always
+
+    zookeeper:
+        image: zookeeper:3.4
+        container_name: zookeeper
+        restart: always
+
+    storm:
+        build: .
+        container_name: storm
+        command: bash start.sh
+        depends_on:
+            - zookeeper
+        links:
+            - zookeeper
+        restart: always
+        ports:
+            - '8089:8000'
+            - '6627:6627'
+            - '9005:9000'
+            - '8085:8080'
+        volumes:
+            - ./conf:/conf
+            - ./tasks:/tasks

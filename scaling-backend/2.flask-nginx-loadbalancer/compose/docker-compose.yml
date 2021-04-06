@@ -1,0 +1,16 @@
+version: '2.3'
+services:
+  flask:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # flask1
+      - '5001:5001' # flask2
+      - '80:80' # nginx
+
+  redis:
+    image: redis:alpine

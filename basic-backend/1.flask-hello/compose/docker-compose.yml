@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  flask-hello:
+    build:
+      context: ..
+      target: base
+    command: bash eventlet.sh
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # flask
+    volumes:
+      - ..:/app

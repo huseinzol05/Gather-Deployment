@@ -1,0 +1,7 @@
+Flask
+eventlet
+gunicorn
+elasticsearch
+bs4
+requests
+lxml

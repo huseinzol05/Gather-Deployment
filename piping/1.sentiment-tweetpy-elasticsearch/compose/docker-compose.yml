@@ -1,0 +1,16 @@
+version: '2.3'
+services:
+  sentiment-twitter-elasticsearch:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '9200:9200' # elastic
+      - '5601:5601' # kibana
+      - '9000:9000' # supervisord
+      - '8095:8095' # sentiment
+    volumes:
+      - ..:/app

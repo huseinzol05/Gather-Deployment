@@ -1,0 +1,5 @@
+Flask
+redis
+flask_restful
+eventlet
+gunicorn

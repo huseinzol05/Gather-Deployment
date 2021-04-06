@@ -1,0 +1,5 @@
+#!/bin/sh
+
+supervisord -c supervisord.conf
+python3 producer.py
+python3 app.py

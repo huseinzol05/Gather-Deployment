@@ -1,0 +1,8 @@
+#!/bin/sh
+
+useradd elastic
+chmod 777 -R elasticsearch-6.3.2
+#supervisord --nodaemon -c develop/supervisord.conf
+su -c "elasticsearch-6.3.2/bin/elasticsearch -d" elastic
+python3 app.py
+

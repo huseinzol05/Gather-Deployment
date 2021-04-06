@@ -1,0 +1,8 @@
+Flask
+eventlet
+gunicorn
+redis
+uwsgi
+flask-socketio
+psycopg2
+gevent

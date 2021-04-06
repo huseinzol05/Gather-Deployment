@@ -1,0 +1,8 @@
+#!/bin/sh
+
+rm /etc/nginx/sites-enabled/default
+cp load-balancer.conf /etc/nginx/conf.d/
+service nginx start
+service nginx restart
+gunicorn --daemon --worker-class eventlet -b 0.0.0.0:5000 app:app
+gunicorn --worker-class eventlet -b 0.0.0.0:5001 app:app

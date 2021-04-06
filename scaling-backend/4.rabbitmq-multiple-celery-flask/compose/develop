@@ -1,0 +1,5 @@
+#!/bin/sh
+
+service rabbitmq-server start
+supervisord -c supervisord.conf
+python3 app.py

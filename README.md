@@ -1,10 +1,17 @@
 # Gather-Deployment
 
-Gathers scalable tensorflow and Python infrastructure deployment, reusable purpose in the future, 100% Docker.
+Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To for development, 100% Docker.
 
 ## Table of contents
   * [Requirements](#Requirements)
   * [Tensorflow deployment](#tensorflow-deployment)
+  * [Basic Backend](#basic-backend)
+  * [Scaling-up Backend](#scaling-backend)]
+  * [Big data piping](#big-data-piping)
+  * [Apache cluster](#apache-cluster)
+  * [Unit test](#unit-test)
+  * [Stress test](#stress-test)
+  * [Miscellaneous](#Miscellaneous)
   * [Printscreen](#printscreen)
   * [Notes](#notes)
 
@@ -122,6 +129,62 @@ Batch processing to classify texts using Tensorflow text model on Flink batch pr
 26. Text classification. _PyFlink + Kafka_
 
 Stream texts to Kafka Producer -> PyFlink Streaming, to do minibatch realtime processing.
+
+## [Basic Backend](basic-backend)
+
+1. Flask
+2. Flask with MongoDB
+3. REST API Flask
+4. Flask Redis PubSub
+5. Flask Mysql with REST API
+6. Flask Postgres with REST API
+7. Flask Elasticsearch
+8. Flask Logstash with Gunicorn
+9. MLFlow with Nginx reversed proxy
+
+## [Scaling Backend](scaling-backend)
+
+1. Flask SocketIO with Redis
+2. Multiple Flask with Nginx Loadbalancer
+3. Multiple Flask SocketIO with Nginx Loadbalancer
+4. RabbitMQ and multiple Celery with Flask
+5. Flask + Gunicorn + HAproxy
+
+## [Big data piping](piping)
+
+1. Streaming Tweepy to Elasticsearch
+2. Scheduled crawler using Luigi Spotify to Elasticsearch
+3. Airflow to Elasticsearch
+
+## [Apache cluster](apache-cluster)
+
+1. Flask with Hadoop
+2. Flask with Kafka
+3. Flask with Hadoop Hive
+4. PySpark with Jupyter and Hadoop
+5. Flink with Jupyter
+6. Apache Storm with Redis
+
+## [Unit test](unit-test)
+
+1. Pytest
+
+## [Stress test](stresstest)
+
+1. Locust
+
+## [Miscellaneous](misc)
+
+1. Elasticsearch + Kibana
+2. Elasticsearch + Cerebro
+3. Jupyter notebook
+4. Jupyterhub
+5. Jupyterhub + Github Auth
+6. Hadoop cluster + Luigi + Jupyter Notebook
+7. Kafka cluster
+8. Apache Storm
+9. AutoPEP8
+10. Graph function dependencies
 
 ## Printscreen
 

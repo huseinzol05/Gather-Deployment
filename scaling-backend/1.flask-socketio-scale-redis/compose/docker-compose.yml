@@ -1,0 +1,11 @@
+version: '2.3'
+services:
+  socketio:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # flask

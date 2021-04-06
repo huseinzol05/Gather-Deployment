@@ -1,0 +1,9 @@
+version: '2.3'
+services:
+  pytest:
+    build:
+      context: ..
+    command: pytest tests --cov --cov-report term --cov-report html
+    environment:
+      PYTHONPATH: .
+      FLASK_APP: web

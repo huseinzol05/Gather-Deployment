@@ -1,0 +1,500 @@
+digraph G {
+    graph [rankdir=TB, clusterrank="local"];
+    subgraph cluster_G {
+
+        graph [style="filled,rounded",fillcolor="#80808018", label=""];
+        malaya__main [label="malaya.main", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="0"];
+        malaya__num2word [label="malaya.num2word", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="1"];
+        malaya__sentiment [label="malaya.sentiment", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="2"];
+        malaya__topic [label="malaya.topic", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="3"];
+        malaya__utils [label="malaya.utils", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="4"];
+        malaya__word2vec [label="malaya.word2vec", style="filled", fillcolor="#ffffffb2", fontcolor="#000000", group="5"];
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__DEEP_MODELS [label="DEEP_MODELS\n(malaya/main.py:90)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__NORMALIZE [label="NORMALIZE\n(malaya/main.py:66)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__USER_BAYES [label="USER_BAYES\n(malaya/main.py:53)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__basic_normalize [label="basic_normalize\n(malaya/main.py:312)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__clearstring [label="clearstring\n(malaya/main.py:152)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__deep_learning [label="deep_learning\n(malaya/main.py:216)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__generate_char_seq [label="generate_char_seq\n(malaya/main.py:173)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__get_entity_char [label="get_entity_char\n(malaya/main.py:183)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__get_entity_concat [label="get_entity_concat\n(malaya/main.py:191)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__isWord [label="isWord\n(malaya/main.py:101)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__load_graphX [label="load_graph\n(malaya/main.py:208)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__naive_POS [label="naive_POS\n(malaya/main.py:269)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__naive_POS_string [label="naive_POS_string\n(malaya/main.py:288)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__process_word [label="process_word\n(malaya/main.py:141)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__separate_dataset [label="separate_dataset\n(malaya/main.py:344)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__stemming [label="stemming\n(malaya/main.py:295)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__str_idx [label="str_idx\n(malaya/main.py:162)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__textcleaning [label="textcleaning\n(malaya/main.py:130)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__tokenizer [label="tokenizer\n(malaya/main.py:266)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__train_bayes [label="train_bayes\n(malaya/main.py:355)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__train_normalize [label="train_normalize\n(malaya/main.py:323)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main"];
+            malaya__main__variant [label="variant\n(malaya/main.py:303)", style="filled", fillcolor="#ff9999b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main__DEEP_MODELS {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main.DEEP_MODELS"];
+            malaya__main__DEEP_MODELS____init__ [label="__init__\n(malaya/main.py:91)", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main__DEEP_MODELS {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main.DEEP_MODELS"];
+            malaya__main__DEEP_MODELS__predict [label="predict\n(malaya/main.py:95)", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main__NORMALIZE {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main.NORMALIZE"];
+            malaya__main__NORMALIZE____init__ [label="__init__\n(malaya/main.py:67)", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main__NORMALIZE {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main.NORMALIZE"];
+            malaya__main__NORMALIZE__normalize [label="normalize\n(malaya/main.py:70)", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main__USER_BAYES {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main.USER_BAYES"];
+            malaya__main__USER_BAYES____init__ [label="__init__\n(malaya/main.py:54)", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__main__USER_BAYES {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.main.USER_BAYES"];
+            malaya__main__USER_BAYES__predict [label="predict\n(malaya/main.py:58)", style="filled", fillcolor="#ff6565b2", fontcolor="#000000", group="0"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__join [label="join\n(malaya/num2word.py:102)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__puluh [label="puluh\n(malaya/num2word.py:48)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__ratus [label="ratus\n(malaya/num2word.py:40)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__spell [label="spell\n(malaya/num2word.py:74)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__spell_float [label="spell_float\n(malaya/num2word.py:93)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__split_by_3 [label="split_by_3\n(malaya/num2word.py:61)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__split_by_koma [label="split_by_koma\n(malaya/num2word.py:37)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__to_cardinal [label="to_cardinal\n(malaya/num2word.py:122)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__to_currency [label="to_currency\n(malaya/num2word.py:145)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__to_ordinal [label="to_ordinal\n(malaya/num2word.py:134)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__to_ordinal_num [label="to_ordinal_num\n(malaya/num2word.py:141)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__to_year [label="to_year\n(malaya/num2word.py:148)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__num2word {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.num2word"];
+            malaya__num2word__verify_ordinal [label="verify_ordinal\n(malaya/num2word.py:31)", style="filled", fillcolor="#fff099b2", fontcolor="#000000", group="1"];
+        }
+        subgraph cluster_malaya__sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment"];
+            malaya__sentiment__deep_sentiment [label="deep_sentiment\n(malaya/sentiment.py:42)", style="filled", fillcolor="#b6ff99b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment"];
+            malaya__sentiment__load_graphX [label="load_graph\n(malaya/sentiment.py:24)", style="filled", fillcolor="#b6ff99b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment"];
+            malaya__sentiment__str_idx [label="str_idx\n(malaya/sentiment.py:32)", style="filled", fillcolor="#b6ff99b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment"];
+            malaya__sentiment__textcleaning [label="textcleaning\n(malaya/sentiment.py:18)", style="filled", fillcolor="#b6ff99b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__sentiment__deep_sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment.deep_sentiment"];
+            malaya__sentiment__deep_sentiment____init__ [label="__init__\n(malaya/sentiment.py:43)", style="filled", fillcolor="#91ff65b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__sentiment__deep_sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment.deep_sentiment"];
+            malaya__sentiment__deep_sentiment__predict [label="predict\n(malaya/sentiment.py:91)", style="filled", fillcolor="#91ff65b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__sentiment__deep_sentiment {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.sentiment.deep_sentiment"];
+            malaya__sentiment__deep_sentiment__predict_batch [label="predict_batch\n(malaya/sentiment.py:110)", style="filled", fillcolor="#91ff65b2", fontcolor="#000000", group="2"];
+        }
+        subgraph cluster_malaya__topic {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic"];
+            malaya__topic__TOPIC [label="TOPIC\n(malaya/topic.py:11)", style="filled", fillcolor="#99ffd3b2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__topic {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic"];
+            malaya__topic__clearstring [label="clearstring\n(malaya/topic.py:21)", style="filled", fillcolor="#99ffd3b2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__topic {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic"];
+            malaya__topic__train_lda [label="train_lda\n(malaya/topic.py:30)", style="filled", fillcolor="#99ffd3b2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__topic {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic"];
+            malaya__topic__train_lsa [label="train_lsa\n(malaya/topic.py:48)", style="filled", fillcolor="#99ffd3b2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__topic {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic"];
+            malaya__topic__train_nmf [label="train_nmf\n(malaya/topic.py:39)", style="filled", fillcolor="#99ffd3b2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__topic__TOPIC {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic.TOPIC"];
+            malaya__topic__TOPIC____init__ [label="__init__\n(malaya/topic.py:12)", style="filled", fillcolor="#65ffbdb2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__topic__TOPIC {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.topic.TOPIC"];
+            malaya__topic__TOPIC__get_topics [label="get_topics\n(malaya/topic.py:15)", style="filled", fillcolor="#65ffbdb2", fontcolor="#000000", group="3"];
+        }
+        subgraph cluster_malaya__utils {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.utils"];
+            malaya__utils__download_file [label="download_file\n(malaya/utils.py:5)", style="filled", fillcolor="#99d3ffb2", fontcolor="#000000", group="4"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__Model [label="Model\n(malaya/word2vec.py:70)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__Word2Vec [label="Word2Vec\n(malaya/word2vec.py:141)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__build_dict [label="build_dict\n(malaya/word2vec.py:39)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__build_training_set [label="build_training_set\n(malaya/word2vec.py:60)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__build_word_array [label="build_word_array\n(malaya/word2vec.py:54)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__counter_words [label="counter_words\n(malaya/word2vec.py:27)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__doc2num [label="doc2num\n(malaya/word2vec.py:47)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec"];
+            malaya__word2vec__get_word2vec [label="get_word2vec\n(malaya/word2vec.py:18)", style="filled", fillcolor="#b699ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Model {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Model"];
+            malaya__word2vec__Model____init__ [label="__init__\n(malaya/word2vec.py:71)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Model {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Model"];
+            malaya__word2vec__Model__train [label="train\n(malaya/word2vec.py:111)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Word2Vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Word2Vec"];
+            malaya__word2vec__Word2Vec____init__ [label="__init__\n(malaya/word2vec.py:142)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Word2Vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Word2Vec"];
+            malaya__word2vec__Word2Vec__analogy [label="analogy\n(malaya/word2vec.py:173)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Word2Vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Word2Vec"];
+            malaya__word2vec__Word2Vec__closest_row_indices [label="closest_row_indices\n(malaya/word2vec.py:168)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Word2Vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Word2Vec"];
+            malaya__word2vec__Word2Vec__get_vector_by_name [label="get_vector_by_name\n(malaya/word2vec.py:147)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Word2Vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Word2Vec"];
+            malaya__word2vec__Word2Vec__n_closest [label="n_closest\n(malaya/word2vec.py:150)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+        subgraph cluster_malaya__word2vec__Word2Vec {
+
+            graph [style="filled,rounded",fillcolor="#80808018", label="malaya.word2vec.Word2Vec"];
+            malaya__word2vec__Word2Vec__project_2d [label="project_2d\n(malaya/word2vec.py:184)", style="filled", fillcolor="#9165ffb2", fontcolor="#000000", group="5"];
+        }
+    }
+        malaya__main -> malaya__main__deep_learning [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__basic_normalize [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__str_idx [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__textcleaning [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__process_word [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__train_normalize [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__USER_BAYES [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__generate_char_seq [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__clearstring [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__get_entity_char [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__separate_dataset [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__tokenizer [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__NORMALIZE [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__DEEP_MODELS [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__train_bayes [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__naive_POS [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__naive_POS_string [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__get_entity_concat [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__isWord [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__load_graphX [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__stemming [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__main__variant [style="dashed", color="#838b8b"];
+        malaya__main__USER_BAYES -> malaya__main__USER_BAYES____init__ [style="dashed", color="#838b8b"];
+        malaya__main__USER_BAYES -> malaya__main__USER_BAYES__predict [style="dashed", color="#838b8b"];
+        malaya__main__NORMALIZE -> malaya__main__NORMALIZE__normalize [style="dashed", color="#838b8b"];
+        malaya__main__NORMALIZE -> malaya__main__NORMALIZE____init__ [style="dashed", color="#838b8b"];
+        malaya__main__DEEP_MODELS -> malaya__main__DEEP_MODELS__predict [style="dashed", color="#838b8b"];
+        malaya__main__DEEP_MODELS -> malaya__main__DEEP_MODELS____init__ [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__ratus [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__to_currency [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__spell [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__to_year [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__verify_ordinal [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__spell_float [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__split_by_koma [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__to_cardinal [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__join [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__puluh [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__to_ordinal [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__to_ordinal_num [style="dashed", color="#838b8b"];
+        malaya__num2word -> malaya__num2word__split_by_3 [style="dashed", color="#838b8b"];
+        malaya__sentiment -> malaya__sentiment__deep_sentiment [style="dashed", color="#838b8b"];
+        malaya__sentiment -> malaya__sentiment__load_graphX [style="dashed", color="#838b8b"];
+        malaya__sentiment -> malaya__sentiment__str_idx [style="dashed", color="#838b8b"];
+        malaya__sentiment -> malaya__sentiment__textcleaning [style="dashed", color="#838b8b"];
+        malaya__sentiment__deep_sentiment -> malaya__sentiment__deep_sentiment__predict [style="dashed", color="#838b8b"];
+        malaya__sentiment__deep_sentiment -> malaya__sentiment__deep_sentiment____init__ [style="dashed", color="#838b8b"];
+        malaya__sentiment__deep_sentiment -> malaya__sentiment__deep_sentiment__predict_batch [style="dashed", color="#838b8b"];
+        malaya__topic -> malaya__topic__clearstring [style="dashed", color="#838b8b"];
+        malaya__topic -> malaya__topic__train_lda [style="dashed", color="#838b8b"];
+        malaya__topic -> malaya__topic__TOPIC [style="dashed", color="#838b8b"];
+        malaya__topic -> malaya__topic__train_lsa [style="dashed", color="#838b8b"];
+        malaya__topic -> malaya__topic__train_nmf [style="dashed", color="#838b8b"];
+        malaya__topic__TOPIC -> malaya__topic__TOPIC__get_topics [style="dashed", color="#838b8b"];
+        malaya__topic__TOPIC -> malaya__topic__TOPIC____init__ [style="dashed", color="#838b8b"];
+        malaya__utils -> malaya__utils__download_file [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__build_dict [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__build_word_array [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__doc2num [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__Model [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__Word2Vec [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__counter_words [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__get_word2vec [style="dashed", color="#838b8b"];
+        malaya__word2vec -> malaya__word2vec__build_training_set [style="dashed", color="#838b8b"];
+        malaya__word2vec__Model -> malaya__word2vec__Model____init__ [style="dashed", color="#838b8b"];
+        malaya__word2vec__Model -> malaya__word2vec__Model__train [style="dashed", color="#838b8b"];
+        malaya__word2vec__Word2Vec -> malaya__word2vec__Word2Vec__closest_row_indices [style="dashed", color="#838b8b"];
+        malaya__word2vec__Word2Vec -> malaya__word2vec__Word2Vec__get_vector_by_name [style="dashed", color="#838b8b"];
+        malaya__word2vec__Word2Vec -> malaya__word2vec__Word2Vec__analogy [style="dashed", color="#838b8b"];
+        malaya__word2vec__Word2Vec -> malaya__word2vec__Word2Vec__n_closest [style="dashed", color="#838b8b"];
+        malaya__word2vec__Word2Vec -> malaya__word2vec__Word2Vec__project_2d [style="dashed", color="#838b8b"];
+        malaya__word2vec__Word2Vec -> malaya__word2vec__Word2Vec____init__ [style="dashed", color="#838b8b"];
+        malaya__main -> malaya__utils__download_file [style="solid", color="#000000"];
+        malaya__main__textcleaning -> malaya__main__isWord [style="solid", color="#000000"];
+        malaya__main__get_entity_char -> malaya__main__process_word [style="solid", color="#000000"];
+        malaya__main__get_entity_char -> malaya__main__str_idx [style="solid", color="#000000"];
+        malaya__main__get_entity_concat -> malaya__main__process_word [style="solid", color="#000000"];
+        malaya__main__get_entity_concat -> malaya__main__generate_char_seq [style="solid", color="#000000"];
+        malaya__main__deep_learning -> malaya__main__get_entity_char [style="solid", color="#000000"];
+        malaya__main__deep_learning -> malaya__main__DEEP_MODELS [style="solid", color="#000000"];
+        malaya__main__deep_learning -> malaya__main__get_entity_concat [style="solid", color="#000000"];
+        malaya__main__deep_learning -> malaya__main__DEEP_MODELS____init__ [style="solid", color="#000000"];
+        malaya__main__deep_learning -> malaya__main__load_graphX [style="solid", color="#000000"];
+        malaya__main__deep_learning -> malaya__utils__download_file [style="solid", color="#000000"];
+        malaya__main__naive_POS_string -> malaya__main__naive_POS [style="solid", color="#000000"];
+        malaya__main__train_normalize -> malaya__main__NORMALIZE [style="solid", color="#000000"];
+        malaya__main__train_normalize -> malaya__main__NORMALIZE____init__ [style="solid", color="#000000"];
+        malaya__main__train_bayes -> malaya__main__USER_BAYES [style="solid", color="#000000"];
+        malaya__main__train_bayes -> malaya__main__clearstring [style="solid", color="#000000"];
+        malaya__main__train_bayes -> malaya__main__USER_BAYES____init__ [style="solid", color="#000000"];
+        malaya__main__train_bayes -> malaya__main__separate_dataset [style="solid", color="#000000"];
+        malaya__main__train_bayes -> malaya__main__stemming [style="solid", color="#000000"];
+        malaya__num2word__spell -> malaya__num2word__puluh [style="solid", color="#000000"];
+        malaya__num2word__spell -> malaya__num2word__ratus [style="solid", color="#000000"];
+        malaya__num2word__to_cardinal -> malaya__num2word__spell [style="solid", color="#000000"];
+        malaya__num2word__to_cardinal -> malaya__num2word__spell_float [style="solid", color="#000000"];
+        malaya__num2word__to_cardinal -> malaya__num2word__split_by_koma [style="solid", color="#000000"];
+        malaya__num2word__to_cardinal -> malaya__num2word__join [style="solid", color="#000000"];
+        malaya__num2word__to_cardinal -> malaya__num2word__split_by_3 [style="solid", color="#000000"];
+        malaya__num2word__to_ordinal -> malaya__num2word__to_cardinal [style="solid", color="#000000"];
+        malaya__num2word__to_ordinal -> malaya__num2word__verify_ordinal [style="solid", color="#000000"];
+        malaya__num2word__to_ordinal_num -> malaya__num2word__verify_ordinal [style="solid", color="#000000"];
+        malaya__num2word__to_currency -> malaya__num2word__to_cardinal [style="solid", color="#000000"];
+        malaya__num2word__to_year -> malaya__num2word__to_cardinal [style="solid", color="#000000"];
+        malaya__sentiment__deep_sentiment____init__ -> malaya__sentiment__load_graphX [style="solid", color="#000000"];
+        malaya__sentiment__deep_sentiment____init__ -> malaya__utils__download_file [style="solid", color="#000000"];
+        malaya__sentiment__deep_sentiment__predict -> malaya__sentiment__textcleaning [style="solid", color="#000000"];
+        malaya__sentiment__deep_sentiment__predict -> malaya__sentiment__str_idx [style="solid", color="#000000"];
+        malaya__sentiment__deep_sentiment__predict_batch -> malaya__sentiment__textcleaning [style="solid", color="#000000"];
+        malaya__sentiment__deep_sentiment__predict_batch -> malaya__sentiment__str_idx [style="solid", color="#000000"];
+        malaya__topic__train_lda -> malaya__topic__clearstring [style="solid", color="#000000"];
+        malaya__topic__train_lda -> malaya__topic__TOPIC____init__ [style="solid", color="#000000"];
+        malaya__topic__train_lda -> malaya__topic__TOPIC [style="solid", color="#000000"];
+        malaya__topic__train_nmf -> malaya__topic__clearstring [style="solid", color="#000000"];
+        malaya__topic__train_nmf -> malaya__topic__TOPIC____init__ [style="solid", color="#000000"];
+        malaya__topic__train_nmf -> malaya__topic__TOPIC [style="solid", color="#000000"];
+        malaya__topic__train_lsa -> malaya__topic__clearstring [style="solid", color="#000000"];
+        malaya__topic__train_lsa -> malaya__topic__TOPIC____init__ [style="solid", color="#000000"];
+        malaya__topic__train_lsa -> malaya__topic__TOPIC [style="solid", color="#000000"];
+        malaya__word2vec__get_word2vec -> malaya__utils__download_file [style="solid", color="#000000"];
+        malaya__word2vec__build_word_array -> malaya__word2vec__build_dict [style="solid", color="#000000"];
+        malaya__word2vec__build_word_array -> malaya__word2vec__doc2num [style="solid", color="#000000"];
+        malaya__word2vec__build_word_array -> malaya__word2vec__counter_words [style="solid", color="#000000"];
+        malaya__word2vec__Word2Vec__n_closest -> malaya__word2vec__Word2Vec__closest_row_indices [style="solid", color="#000000"];
+        malaya__word2vec__Word2Vec__n_closest -> malaya__word2vec__Word2Vec__get_vector_by_name [style="solid", color="#000000"];
+        malaya__word2vec__Word2Vec__analogy -> malaya__word2vec__Word2Vec__closest_row_indices [style="solid", color="#000000"];
+        malaya__word2vec__Word2Vec__analogy -> malaya__word2vec__Word2Vec__get_vector_by_name [style="solid", color="#000000"];
+    }

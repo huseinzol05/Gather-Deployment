@@ -1,0 +1,4 @@
+#!/bin/sh
+
+docker-compose -f $(dirname "$0")/docker-compose.yml up --build
+rm -r report && docker cp compose_pytest_1:/home/flask/htmlcov report

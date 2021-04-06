@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  jupyterhub:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - ..:/app

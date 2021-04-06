@@ -1,0 +1,4 @@
+#!/bin/sh
+
+redis-server --daemonize yes
+bash eventlet.sh

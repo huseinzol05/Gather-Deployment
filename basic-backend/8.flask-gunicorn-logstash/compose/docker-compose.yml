@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+  logstash:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '9200:9200' # elastic
+      - '5601:5601' # kibana
+      - '8000:8000' # flask
+      - '9000:9000' # supervisor

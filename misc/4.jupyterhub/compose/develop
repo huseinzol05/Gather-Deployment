@@ -1,0 +1,5 @@
+#!/bin/sh
+
+adduser --quiet --disabled-password --shell /bin/bash --home /home/jupyter --gecos "User" jupyter
+echo "jupyter:jupyter123" | chpasswd
+jupyterhub

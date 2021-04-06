@@ -1,0 +1,18 @@
+version: '2.3'
+services:
+  flask-hadoop-hive:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000'
+      - '8088:8088'
+      - '9000:9000'
+      - '9870:9870'
+      - '9864:9864'
+      - '19888:19888'
+      - '10000:10000'
+      - '8042:8042'

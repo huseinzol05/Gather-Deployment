@@ -1,0 +1,121 @@
+version: '2.3'
+services:
+  zookeeper:
+    restart: always
+    container_name: zookeeper
+    networks:
+      - backend
+    build:
+      context: .
+      target: base
+    command: /code/kafka_2.11-2.0.0/bin/zookeeper-server-start.sh /code/kafka_2.11-2.0.0/config/zookeeper.properties
+    ports:
+      - '2181:2181'
+  kafka:
+    links:
+      - zookeeper
+    depends_on:
+      - zookeeper
+    restart: always
+    networks:
+      - backend
+    build:
+      context: .
+      target: base
+    volumes:
+      - './kafka-storage:/tmp/kafka-logs'
+    command: /code/kafka_2.11-2.0.0/bin/kafka-server-start.sh /code/kafka_2.11-2.0.0/config/server.properties
+    ports:
+      - '9092:9092'
+    container_name: kafka
+  kafka2:
+    links:
+      - zookeeper
+      - kafka
+    depends_on:
+      - zookeeper
+      - kafka
+    restart: always
+    networks:
+      - backend
+    build:
+      context: .
+      target: base
+    volumes:
+      - './kafka-storage2:/tmp/kafka-logs'
+    command: /code/kafka_2.11-2.0.0/bin/kafka-server-start.sh /code/kafka_2.11-2.0.0/config/server2.properties
+    container_name: kafka2
+  kafka-rest:
+    image: confluentinc/cp-kafka-rest:5.1.0
+    networks:
+      - backend
+    ports:
+      - 8082:8082
+    links:
+      - kafka
+      - zookeeper
+      - kafka2
+    depends_on:
+      - kafka
+      - zookeeper
+      - kafka2
+    environment:
+      KAFKA_REST_HOST_NAME: rest-proxy
+      KAFKA_REST_BOOTSTRAP_SERVERS: 'http://kafka:9092'
+      KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
+    container_name: kafka-rest
+  kafka-landoop:
+    image: landoop/kafka-topics-ui
+    networks:
+      - backend
+    ports:
+      - 8000:8000
+    links:
+      - kafka
+      - zookeeper
+      - kafka-rest
+      - kafka2
+    depends_on:
+      - kafka
+      - zookeeper
+      - kafka-rest
+      - kafka2
+    environment:
+      KAFKA_REST_PROXY_URL: "kafka-rest:8082"
+      PROXY: "true"
+    container_name: kafka-landoop
+  jupyter_notebook:
+    build:
+      context: jupyter
+      target: base
+    command: jupyter notebook --ip=0.0.0.0 --port=8080 --allow-root
+    networks:
+      - backend
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '8080:8080'
+  kafka_manager:
+    image: hlebalbau/kafka-manager:stable
+    networks:
+      - backend
+    links:
+      - kafka
+      - zookeeper
+      - kafka2
+    depends_on:
+      - kafka
+      - zookeeper
+      - kafka2
+    ports:
+      - '9005:9000'
+    environment:
+      ZK_HOSTS: "zookeeper:2181"
+      APPLICATION_SECRET: "random-secret"
+    command: -Dpidfile.path=/dev/null
+    container_name: kafka-manager
+
+networks:
+  backend:
+    external:
+      name: backend_default

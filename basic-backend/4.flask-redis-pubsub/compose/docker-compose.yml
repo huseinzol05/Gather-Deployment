@@ -1,0 +1,13 @@
+version: '2.3'
+services:
+  flask-redis:
+    build:
+      context: ..
+      target: base
+    command: compose/develop
+    environment:
+      PYTHONPATH: .
+    ports:
+      - '5000:5000' # flask
+    volumes:
+      - ..:/app

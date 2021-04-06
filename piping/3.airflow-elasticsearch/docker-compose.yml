@@ -1,0 +1,15 @@
+version: '2.3'
+services:
+  airflow-elasticsearch:
+    build:
+      context: .
+      target: base
+    command: bash start.sh
+    container_name: airflow-elasticsearch
+    volumes:
+      - .:/app
+    ports:
+      - '8080:8080'
+      - '5000:5000'
+      - '9200:9200'
+      - '9001:9000'

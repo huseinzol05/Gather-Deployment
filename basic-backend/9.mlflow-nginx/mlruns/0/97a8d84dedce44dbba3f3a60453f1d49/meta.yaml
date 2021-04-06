@@ -1,0 +1,14 @@
+artifact_uri: /home/husein/mlruns/0/97a8d84dedce44dbba3f3a60453f1d49/artifacts
+end_time: 1538735823692
+entry_point_name: ''
+experiment_id: 0
+lifecycle_stage: active
+name: ''
+run_uuid: 97a8d84dedce44dbba3f3a60453f1d49
+source_name: mlflow/examples/quickstart/mlflow_tracking.py
+source_type: 4
+source_version: 259f049bad1a12c1ae830c7f68d568e74bd26c73
+start_time: 1538735823679
+status: 3
+tags: []
+user_id: husein

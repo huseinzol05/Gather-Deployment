@@ -1,0 +1,8 @@
+numpy
+scipy
+tensorflow
+opencv-contrib-python
+jupyter
+matplotlib
+seaborn
+nteract_on_jupyter
