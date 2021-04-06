@@ -16,7 +16,7 @@ ADD . /code
 
 WORKDIR /code
 
-RUN wget https://storage.googleapis.com/netcore-csv/kafka_2.11-2.4.0.tgz
+RUN wget https://archive.apache.org/dist/kafka/2.4.0/kafka_2.11-2.4.0.tgz
 
 RUN tar -xvzf kafka_2.11-2.4.0.tgz
 

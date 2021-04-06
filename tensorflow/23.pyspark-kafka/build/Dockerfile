@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y \
 
 ENV PYTHON_VERSION $PYTHON_VERSION
 ENV SCALA_VERSION 2.11.8
-ENV SPARK_VERSION 2.4.4
+ENV SPARK_VERSION 3.1.1
 ENV SPARK_BUILD "spark-${SPARK_VERSION}-bin-hadoop2.7"
-ENV SPARK_BUILD_URL "https://storage.googleapis.com/netcore-csv/${SPARK_BUILD}.tgz"
+ENV SPARK_BUILD_URL "https://downloads.apache.org/spark/spark-${SPARK_VERSION}/${SPARK_BUILD}.tgz"
 RUN wget $SPARK_BUILD_URL -O /tmp/spark.tgz && \
     tar -C /opt -xf /tmp/spark.tgz && \
     mv /opt/$SPARK_BUILD /opt/spark && \
