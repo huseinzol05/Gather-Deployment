@@ -1,0 +1,63 @@
+version: "2.1"
+services:
+
+  zookeeper:
+    restart: always
+    container_name: zookeeper
+    build:
+      context: kafka
+      target: base
+    command: /code/kafka_2.11-2.4.0/bin/zookeeper-server-start.sh /code/kafka_2.11-2.4.0/config/zookeeper.properties
+
+  kafka:
+    links:
+      - zookeeper
+    depends_on:
+      - zookeeper
+    restart: always
+    build:
+      context: kafka
+      target: base
+    command: /code/kafka_2.11-2.4.0/bin/kafka-server-start.sh /code/kafka_2.11-2.4.0/config/server.properties
+    ports:
+      - "9092:9092"
+    container_name: kafka
+
+  jobmanager:
+    links:
+      - kafka
+    depends_on:
+      - kafka
+    build:
+      context: flink
+    expose:
+      - "6123"
+    ports:
+      - "8081:8081"
+      - "8089:8089"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+    container_name: flink
+    volumes:
+      - "./notebooks:/notebooks"
+
+  taskmanager:
+    links:
+      - kafka
+    depends_on:
+      - kafka
+    build:
+      context: flink
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    volumes:
+      - "./notebooks:/notebooks"
+    links:
+      - "jobmanager:jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager

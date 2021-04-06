@@ -117,6 +117,10 @@ Change concurrent requests into mini-batch realtime processing to speed up text 
 
 Batch processing to classify texts using Tensorflow text model on Flink batch processing.
 
+26. Text classification. _PyFlink + Kafka_
+
+Stream texts to Kafka Producer -> PyFlink Streaming, to do minibatch realtime processing.
+
 ### Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="40%">
