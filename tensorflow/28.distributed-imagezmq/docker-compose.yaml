@@ -1,0 +1,12 @@
+version: "2.1"
+services:
+  processing:
+    build:
+      context: .
+    scale: 2
+    ports:
+      - "5556:5556"
+    command: python3 processing.py
+    container_name: processing
+    environment:
+      - PYTHONUNBUFFERED=1

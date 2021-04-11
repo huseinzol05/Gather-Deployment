@@ -130,6 +130,10 @@ Batch processing to classify texts using Tensorflow text model on Flink batch pr
 
 Stream texts to Kafka Producer -> PyFlink Streaming, to do minibatch realtime processing.
 
+28. Object Detection. _ImageZMQ_
+
+Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> single dashboard.
+
 ## [Basic Backend](basic-backend)
 
 1. Flask
