@@ -4,6 +4,8 @@ N slaves -> N processing engines -> single dashboard.
 
 <img alt="logo" width="40%" src="distributed.png">
 
+**Running in Kubernetes should be easier, deployment by default comes with load balancer, nginx is not required**.
+
 ## How-To
 
 This repository only support Tensorflow Zoo model, https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf1_detection_zoo.md.
