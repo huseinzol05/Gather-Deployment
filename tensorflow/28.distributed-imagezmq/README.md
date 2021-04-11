@@ -30,4 +30,10 @@ docker-compose -f docker-compose.yaml up --build
 python3 client.py
 ```
 
+4. Add more client, [client2.py](client2.py),
+
+```bash
+python3 client2.py
+```
+
 <img alt="logo" width="30%" src="husein.png">
