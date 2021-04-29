@@ -3,7 +3,7 @@
 1. Run docker compose,
 
 ```bash
-docker-compose docker-compose.yaml up --build
+docker-compose -f docker-compose.yaml up --build
 ```
 
 2. Scale the worker as necessary,
@@ -19,5 +19,5 @@ docker-compose scale taskmanager=2
 ```bash
 /opt/flink/bin/flink run -py /notebooks/wordcount.py
 /opt/flink/bin/flink run -py /notebooks/udf.py
-/opt/flink/bin/flink run -py /notebooks/tensorflow_predict.py
+/opt/flink/bin/flink run --detached -py /notebooks/parquet.py 
 ```

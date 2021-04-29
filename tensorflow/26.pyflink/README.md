@@ -3,7 +3,7 @@
 1. Run docker compose,
 
 ```bash
-docker-compose docker-compose.yaml up --build
+docker-compose -f docker-compose.yaml up --build
 ```
 
 2. Scale the worker as necessary,
