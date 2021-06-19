@@ -169,7 +169,7 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 5. Flink with Jupyter
 6. Apache Storm with Redis
 7. Apache Flink with Zeppelin and Kafka
-8. Oracle bridge to Hive using Apache NiFi
+8. MySQL to Hive using Apache NiFi
 
 ## [Unit test](unit-test)
 
