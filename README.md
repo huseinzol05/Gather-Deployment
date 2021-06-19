@@ -190,6 +190,7 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 9. AutoPEP8
 10. Graph function dependencies
 11. OSRM Malaysia
+12. SymmetricDB + MySQL + Postgres
 
 ## Printscreen
 
