@@ -21,6 +21,14 @@ select * from users;
 select country, count(id) from users group by country;
 ```
 
+3. Create a table inside MySQL,
+
+```bash
+docker exec -it mysql bash
+mysql --user=root --password=mysql
+create table users(id int, last_update timestamp, name varchar(255), primary key (id));
+insert into users values (1, now(), 'husein');
+```
 
 
 
