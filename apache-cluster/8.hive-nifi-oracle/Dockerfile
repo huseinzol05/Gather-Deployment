@@ -2,7 +2,6 @@ FROM openjdk:8 AS base
 
 ENV HADOOP_HOME /opt/hadoop
 ENV HIVE_HOME /opt/hive
-ENV IMPALA_HOME /opt/impala
 
 RUN apt-get update && apt-get install -y ssh wget
 
@@ -34,9 +33,6 @@ ADD ssh_config /root/.ssh/config
 
 RUN wget https://archive.apache.org/dist/hive/hive-3.1.0/apache-hive-3.1.0-bin.tar.gz
 RUN tar -xzf apache-hive-3.1.0-bin.tar.gz && mv apache-hive-3.1.0-bin $HIVE_HOME
-
-RUN wget http://archive.apache.org/dist/impala/3.3.0/apache-impala-3.3.0.tar.gz
-RUN tar -xzf apache-impala-3.3.0.tar.gz && mv apache-impala-3.3.0 $IMPALA_HOME
 
 WORKDIR /app
 

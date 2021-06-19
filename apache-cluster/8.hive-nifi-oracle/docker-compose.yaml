@@ -14,3 +14,13 @@ services:
       - '19888:19888'
       - '10000:10000'
       - '8042:8042'
+  
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    ports:
+      - '8080:8080'
+  
+  oracle:
+    image: store/oracle/database-enterprise:12.2.0.1
+    container_name: oracle
