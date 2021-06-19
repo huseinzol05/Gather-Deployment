@@ -44,3 +44,5 @@ COPY . /app
 
 ENV LC_ALL C.UTF-8
 ENV LANG C.UTF-8
+
+RUN $HADOOP_HOME/bin/hdfs namenode -format
