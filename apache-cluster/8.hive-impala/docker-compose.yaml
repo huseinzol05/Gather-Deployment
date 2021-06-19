@@ -4,7 +4,7 @@ services:
     build:
       context: .
       target: base
-    command: bash start-hive.sh
+    command: bash start.sh
     ports:
       - '8088:8088'
       - '9000:9000'

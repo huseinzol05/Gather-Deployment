@@ -1,4 +1,4 @@
-FROM FROM openjdk:8 AS base
+FROM openjdk:8 AS base
 
 ENV HADOOP_HOME /opt/hadoop
 ENV HIVE_HOME /opt/hive
