@@ -7,7 +7,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 RUN apt-get update && apt-get install -y ssh wget
 
-RUN wget http://www-eu.apache.org/dist/hadoop/common/hadoop-3.1.1/hadoop-3.1.1.tar.gz && \
+RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-3.1.1/hadoop-3.1.1.tar.gz && \
     tar -xzf hadoop-3.1.1.tar.gz && \
     mv hadoop-3.1.1 $HADOOP_HOME && \
     for user in hadoop hdfs yarn mapred; do \

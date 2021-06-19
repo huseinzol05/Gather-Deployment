@@ -4,6 +4,7 @@ services:
     build:
       context: .
       target: base
+    container_name: hive
     command: bash start.sh
     ports:
       - '8088:8088'
