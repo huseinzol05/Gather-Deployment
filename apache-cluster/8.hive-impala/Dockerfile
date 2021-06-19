@@ -37,3 +37,10 @@ RUN tar -xzf apache-hive-3.1.0-bin.tar.gz && mv apache-hive-3.1.0-bin $HIVE_HOME
 
 RUN wget http://archive.apache.org/dist/impala/3.3.0/apache-impala-3.3.0.tar.gz
 RUN tar -xzf apache-impala-3.3.0.tar.gz && mv apache-impala-3.3.0 $IMPALA_HOME
+
+WORKDIR /app
+
+COPY . /app
+
+ENV LC_ALL C.UTF-8
+ENV LANG C.UTF-8
