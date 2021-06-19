@@ -3,7 +3,6 @@ FROM openjdk:8 AS base
 ENV HADOOP_HOME /opt/hadoop
 ENV HIVE_HOME /opt/hive
 ENV IMPALA_HOME /opt/impala
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 
 RUN apt-get update && apt-get install -y ssh wget
 
@@ -38,16 +37,3 @@ RUN tar -xzf apache-hive-3.1.0-bin.tar.gz && mv apache-hive-3.1.0-bin $HIVE_HOME
 
 RUN wget http://archive.apache.org/dist/impala/3.3.0/apache-impala-3.3.0.tar.gz
 RUN tar -xzf apache-impala-3.3.0.tar.gz && mv apache-impala-3.3.0 $IMPALA_HOME
-
-RUN /etc/init.d/ssh start
-
-RUN $HADOOP_HOME/bin/hdfs namenode -format
-
-RUN $HADOOP_HOME/sbin/start-yarn.sh
-RUN $HADOOP_HOME/sbin/start-dfs.sh
-
-RUN $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
-RUN $HADOOP_HOME/bin/hdfs dfs -chmod 765 /user/hive/warehouse
-RUN $HIVE_HOME/bin/schematool -initSchema -dbType derby
-
-RUN $IMPALA_HOME/bin/impala-config.sh
