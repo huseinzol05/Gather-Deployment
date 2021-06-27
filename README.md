@@ -7,8 +7,8 @@ Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To f
   * [Tensorflow deployment](#tensorflow-deployment)
   * [Basic Backend](#basic-backend)
   * [Scaling-up Backend](#scaling-backend)
-  * [Big data piping](#big-data-piping)
-  * [Apache cluster](#apache-cluster)
+  * [Apache stack](#apache-stack)
+  * [simple data pipeline](#simple-data-pipeline)
   * [Unit test](#unit-test)
   * [Stress test](#stress-test)
   * [Miscellaneous](#Miscellaneous)
@@ -154,13 +154,7 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 4. RabbitMQ and multiple Celery with Flask
 5. Flask + Gunicorn + HAproxy
 
-## [Big data piping](piping)
-
-1. Streaming Tweepy to Elasticsearch
-2. Scheduled crawler using Luigi Spotify to Elasticsearch
-3. Airflow to Elasticsearch
-
-## [Apache cluster](apache-cluster)
+## [Apache stack](apache-stack)
 
 1. Flask with Hadoop
 2. Flask with Kafka
@@ -170,6 +164,12 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 6. Apache Storm with Redis
 7. Apache Flink with Zeppelin and Kafka
 8. MySQL to Hive using Apache NiFi
+
+## [simple data pipeline](pipeline)
+
+1. Streaming Tweepy to Elasticsearch
+2. Scheduled crawler using Luigi Spotify to Elasticsearch
+3. Airflow to Elasticsearch
 
 ## [Unit test](unit-test)
 
@@ -199,10 +199,3 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="30%">
 
 **All folders contain print screens, logs and instructions on how to start.**
-
-## Notes
-
-1. Deploy them on a server, change `local` in code snippets to your own IP.
-2. WebRTC chrome only can tested on HTTPS server.
-3. When come to real deployment, always prepare for up-scaling architectures. Learn about DevOps.
-4. Please aware with your cloud cost!

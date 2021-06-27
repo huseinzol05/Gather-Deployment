@@ -2,7 +2,7 @@ version: '2.3'
 services:
   hive:
     build:
-      context: .
+      context: hive
       target: base
     container_name: hive
     command: bash start.sh
@@ -16,7 +16,9 @@ services:
       - '8042:8042'
   
   nifi:
-    image: apache/nifi:latest
+    build:
+      context: nifi
+      target: base
     container_name: nifi
     ports:
       - '8080:8080'
