@@ -5,15 +5,13 @@ Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To f
 ## Table of contents
   * [Requirements](#Requirements)
   * [Tensorflow deployment](#tensorflow-deployment)
-  * [Basic Backend](#basic-backend)
-  * [Scaling-up Backend](#scaling-backend)
+  * [Simple Backend](#simple-backend)
   * [Apache stack](#apache-stack)
   * [simple data pipeline](#simple-data-pipeline)
   * [Unit test](#unit-test)
   * [Stress test](#stress-test)
   * [Miscellaneous](#Miscellaneous)
   * [Printscreen](#printscreen)
-  * [Notes](#notes)
 
 ## Requirements
 
@@ -134,7 +132,7 @@ Stream texts to Kafka Producer -> PyFlink Streaming, to do minibatch realtime pr
 
 Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> single dashboard.
 
-## [Basic Backend](basic-backend)
+## [Simple Backend](simple-backend)
 
 1. Flask
 2. Flask with MongoDB
@@ -144,26 +142,23 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 6. Flask Postgres with REST API
 7. Flask Elasticsearch
 8. Flask Logstash with Gunicorn
-9. MLFlow with Nginx reversed proxy
-
-## [Scaling Backend](scaling-backend)
-
-1. Flask SocketIO with Redis
-2. Multiple Flask with Nginx Loadbalancer
-3. Multiple Flask SocketIO with Nginx Loadbalancer
-4. RabbitMQ and multiple Celery with Flask
-5. Flask + Gunicorn + HAproxy
+9. Flask SocketIO with Redis
+10. Multiple Flask with Nginx Loadbalancer
+11. Multiple Flask SocketIO with Nginx Loadbalancer
+12. RabbitMQ and multiple Celery with Flask
+13. Flask + Gunicorn + HAproxy
 
 ## [Apache stack](apache-stack)
 
-1. Flask with Hadoop
+1. Flask with Hadoop Map Reduce
 2. Flask with Kafka
 3. Flask with Hadoop Hive
-4. PySpark with Jupyter and Hadoop
-5. Flink with Jupyter
+4. PySpark with Jupyter
+5. Apache Flink with Jupyter
 6. Apache Storm with Redis
 7. Apache Flink with Zeppelin and Kafka
-8. MySQL to Hive using Apache NiFi
+8. Kafka cluster + Kafka REST
+9. Spotify Luigi + Hadoop streaming
 
 ## [simple data pipeline](pipeline)
 
@@ -181,21 +176,17 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 
 ## [Miscellaneous](misc)
 
-1. Elasticsearch + Kibana
-2. Elasticsearch + Cerebro
-3. Jupyter notebook
-4. Jupyterhub
-5. Jupyterhub + Github Auth
-6. Hadoop cluster + Luigi + Jupyter Notebook
-7. Kafka cluster
-8. Apache Storm
-9. AutoPEP8
-10. Graph function dependencies
-11. OSRM Malaysia
-12. SymmetricDB + MySQL + Postgres
+1. Elasticsearch + Kibana + Cerebro
+2. Jupyter notebook
+3. Jupyterhub
+4. Jupyterhub + Github Auth
+5. AutoPEP8
+6. Graph function dependencies
+7. OSRM Malaysia
+8. MLFlow
 
 ## Printscreen
 
-<img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="30%">
+<img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="20%">
 
 **All folders contain print screens, logs and instructions on how to start.**
