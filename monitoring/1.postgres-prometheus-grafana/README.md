@@ -116,25 +116,25 @@ docker-compose up --build
 
 ## pictures
 
-<img src="picture/pic1" width="40%">
-<img src="picture/pic2" width="40%">
-<img src="picture/pic3" width="40%">
-<img src="picture/pic4" width="40%">
-<img src="picture/pic5" width="40%">
-<img src="picture/pic6" width="40%">
-<img src="picture/pic7" width="40%">
-<img src="picture/pic8" width="40%">
-<img src="picture/pic9" width="40%">
-<img src="picture/pic10" width="40%">
-<img src="picture/pic11" width="40%">
-<img src="picture/pic12" width="40%">
-<img src="picture/pic13" width="40%">
-<img src="picture/pic14" width="40%">
-<img src="picture/pic15" width="40%">
-<img src="picture/pic16" width="40%">
-<img src="picture/pic17" width="40%">
-<img src="picture/pic18" width="40%">
-<img src="picture/pic19" width="40%">
-<img src="picture/pic20" width="40%">
-<img src="picture/pic21" width="40%">
-<img src="picture/pic22" width="40%">
+<img src="picture/pic1.png" width="40%">
+<img src="picture/pic2.png" width="40%">
+<img src="picture/pic3.png" width="40%">
+<img src="picture/pic4.png" width="40%">
+<img src="picture/pic5.png" width="40%">
+<img src="picture/pic6.png" width="40%">
+<img src="picture/pic7.png" width="40%">
+<img src="picture/pic8.png" width="40%">
+<img src="picture/pic9.png" width="40%">
+<img src="picture/pic10.png" width="40%">
+<img src="picture/pic11.png" width="40%">
+<img src="picture/pic12.png" width="40%">
+<img src="picture/pic13.png" width="40%">
+<img src="picture/pic14.png" width="40%">
+<img src="picture/pic15.png" width="40%">
+<img src="picture/pic16.png" width="40%">
+<img src="picture/pic17.png" width="40%">
+<img src="picture/pic18.png" width="40%">
+<img src="picture/pic19.png" width="40%">
+<img src="picture/pic20.png" width="40%">
+<img src="picture/pic21.png" width="40%">
+<img src="picture/pic22.png" width="40%">
