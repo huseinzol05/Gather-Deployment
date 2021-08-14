@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+  scrape_timeout: 30s
+
+rule_files:
+  - "/etc/prometheus/postgres-rules.yaml"
+
+scrape_configs:
+  - job_name: "postgres-exporter"
+    static_configs:
+      - targets: ["pg_exporter:9630"]

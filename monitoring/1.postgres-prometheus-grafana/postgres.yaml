@@ -1,0 +1,43 @@
+# https://github.com/bitnami/bitnami-docker-postgresql/blob/master/docker-compose-replication.yml
+
+version: '2'
+
+services:
+  postgresql-master:
+    image: docker.io/bitnami/postgresql:11
+    container_name: postgresql-master
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_master_data:/bitnami/postgresql'
+      - './postgres:/bitnami/postgresql/conf/'
+    environment:
+      - POSTGRESQL_REPLICATION_MODE=master
+      - POSTGRESQL_REPLICATION_USER=postgres
+      - POSTGRESQL_REPLICATION_PASSWORD=postgres
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=postgres
+      - ALLOW_EMPTY_PASSWORD=yes
+  postgresql-slave:
+    image: docker.io/bitnami/postgresql:11
+    container_name: postgresql-slave
+    ports:
+      - '5433:5432'
+    volumes:
+      - './postgres:/bitnami/postgresql/conf/'
+    depends_on:
+      - postgresql-master
+    environment:
+      - POSTGRESQL_REPLICATION_MODE=slave
+      - POSTGRESQL_REPLICATION_USER=postgres
+      - POSTGRESQL_REPLICATION_PASSWORD=postgres
+      - POSTGRESQL_MASTER_HOST=postgresql-master
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_MASTER_PORT_NUMBER=5432
+      - ALLOW_EMPTY_PASSWORD=yes
+
+volumes:
+  postgresql_master_data:
+    driver: local
+  

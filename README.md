@@ -1,6 +1,6 @@
 # Gather-Deployment
 
-Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To for development, 100% Docker.
+Gathers scalable tensorflow and self-hosted infrastructure deployment, Husein Go-To for development, 100% Docker.
 
 ## Table of contents
   * [Requirements](#Requirements)
@@ -10,6 +10,7 @@ Gathers scalable tensorflow and Python infrastructure deployment, Husein Go-To f
   * [simple data pipeline](#simple-data-pipeline)
   * [Unit test](#unit-test)
   * [Stress test](#stress-test)
+  * [Monitoring](#monitoring)
   * [Miscellaneous](#Miscellaneous)
   * [Printscreen](#printscreen)
 
@@ -174,6 +175,10 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 
 1. Locust
 
+## [Monitoring](monitoring)
+
+1. PostgreSQL + Prometheus + Grafana
+
 ## [Miscellaneous](misc)
 
 1. Elasticsearch + Kibana + Cerebro
@@ -188,5 +193,3 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 ## Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="20%">
-
-**All folders contain print screens, logs and instructions on how to start.**

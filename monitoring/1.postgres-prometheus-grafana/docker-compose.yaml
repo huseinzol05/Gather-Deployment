@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  pg_exporter:
+    build: pg-exporter
+    container_name: pg_exporter
+    environment:
+      - PG_EXPORTER_URL=postgres://postgres:postgres@postgresql-master:5432/postgres
+      - PG_EXPORTER_CONFIG=/pg_exporter.yml
+    ports:
+      - '9630:9630'
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - '9090:9090'
+    command:
+      - "--config.file=/etc/prometheus/config.yaml"
+      - "--storage.tsdb.path=/prometheus/"
+      - "--storage.tsdb.retention.time=30d"
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - ./prometheus-data:/prometheus
+  grafana:
+    image: grafana/grafana:7.5.10
+    container_name: grafana
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./grafana/grafana.ini:/etc/grafana/config/grafana.ini
+      - ./grafana/provisioning:/etc/grafana/provisioning/datasources
+      - ./grafana-data:/var/lib/grafana
+    environment:
+      - GF_PATHS_CONFIG=/etc/grafana/config/grafana.ini
+    
+  
+  
