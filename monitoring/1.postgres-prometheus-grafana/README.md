@@ -116,4 +116,4 @@ docker-compose up --build
 
 ## pictures
 
-<img src="picture/combine-pic.png" width="50%">
+<img src="picture/combined-pic.png" width="50%">
