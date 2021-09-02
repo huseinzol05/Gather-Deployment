@@ -15,5 +15,5 @@ docker run -t -v "${PWD}:/data" osrm/osrm-backend osrm-customize /data/${file}.o
 
 ```bash
 file=malaysia-singapore-brunei-latest
-docker run -t -i -p 5000:5000 -v "${PWD}:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/${file}.osrm
+docker run -d -t -i -p 5000:5000 -v "${PWD}:/data" osrm/osrm-backend osrm-routed --algorithm mld /data/${file}.osrm
 ```

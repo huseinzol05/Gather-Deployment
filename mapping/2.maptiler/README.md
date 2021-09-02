@@ -18,7 +18,7 @@ cp maptiler-osm-2017-07-03-v3.6.1-asia_malaysia-singapore-brunei.mbtiles data/ma
 2. Serve server,
 
 ```bash
-WORK_DIR=$PWD/data docker run -p 3650:3650 -v $WORK_DIR:$WORK_DIR maptiler/server --workDir=$WORK_DIR --adminPassword=admin123
+WORK_DIR=$PWD/data docker run -d -p 3650:3650 -v $WORK_DIR:$WORK_DIR maptiler/server --workDir=$WORK_DIR --adminPassword=admin123
 ```
 
 3. Visit map,
