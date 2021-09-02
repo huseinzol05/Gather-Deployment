@@ -11,6 +11,7 @@ Gathers scalable tensorflow and self-hosted infrastructure deployment, Husein Go
   * [Unit test](#unit-test)
   * [Stress test](#stress-test)
   * [Monitoring](#monitoring)
+  * [Mapping](#mapping)
   * [Miscellaneous](#Miscellaneous)
   * [Printscreen](#printscreen)
 
@@ -179,6 +180,13 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 
 1. PostgreSQL + Prometheus + Grafana
 
+## [Mapping](mapping)
+
+**Focused for Malaysia, for other countries, you need to change download links**.
+
+1. OSRM Malaysia
+2. Maptiler Malaysia
+
 ## [Miscellaneous](misc)
 
 1. Elasticsearch + Kibana + Cerebro
@@ -187,9 +195,9 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 4. Jupyterhub + Github Auth
 5. AutoPEP8
 6. Graph function dependencies
-7. OSRM Malaysia
-8. MLFlow
+7. MLFlow
 
 ## Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="20%">
+<img src="mapping/2.maptiler/selangor.png" width="20%">
