@@ -186,6 +186,7 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 
 1. OSRM Malaysia
 2. Maptiler Malaysia
+3. OSM Style Malaysia
 
 ## [Miscellaneous](misc)
 
