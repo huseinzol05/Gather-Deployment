@@ -1,0 +1,61 @@
+version: "3.3"
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - "./app:/app"
+    container_name: app
+    ports:
+      - 8000:8000
+    command: /start-reload.sh
+    environment:
+      PORT: 8000
+      WORKERS_PER_CORE: 0.5
+      loglevel: DEBUG
+    logging:
+      driver: loki
+      options:
+        loki-url: http://localhost:3100/loki/api/v1/push
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    environment:
+      COLLECTOR_ZIPKIN_HTTP_POR: 9411
+    ports:
+    - "16686:16686"
+
+  grafana:
+    image: grafana/grafana:7.5.10
+    container_name: grafana
+    volumes:
+    - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+    environment:
+    - GF_AUTH_ANONYMOUS_ENABLED=true
+    - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    - GF_AUTH_DISABLE_LOGIN_FORM=true
+    ports:
+    - "3000:3000"
+
+  loki:
+    image: grafana/loki:2.2.1
+    container_name: loki
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+    - "3100:3100"
+    logging:
+      driver: loki
+      options:
+        loki-url: 'http://localhost:3100/api/prom/push'
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - '9090:9090'
+    command:
+      - "--config.file=/etc/prometheus/config.yaml"
+      - "--storage.tsdb.retention.time=30d"
+    volumes:
+      - ./prometheus:/etc/prometheus

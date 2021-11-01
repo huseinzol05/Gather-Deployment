@@ -8,3 +8,4 @@
 *ipynb_checkpoints
 *supervisord.log
 *supervisord.pid
+**/prometheus-data/*

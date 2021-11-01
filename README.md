@@ -179,6 +179,7 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 ## [Monitoring](monitoring)
 
 1. PostgreSQL + Prometheus + Grafana
+2. FastAPI + Prometheus + Loki + Jaeger
 
 ## [Mapping](mapping)
 
