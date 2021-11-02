@@ -17,10 +17,10 @@ datasources:
   editable: false
   jsonData:
     derivedFields:
-    - datasourceUid: tempo
+    - datasourceUid: jaeger
       matcherRegex: traceID=(\w+)
+      url: '$${__value.raw}'
       name: TraceID
-      url: $${__value.raw}
 - name: tempo
   type: tempo
   uid: tempo

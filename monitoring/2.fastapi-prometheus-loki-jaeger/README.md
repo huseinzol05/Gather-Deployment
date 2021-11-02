@@ -19,3 +19,5 @@ docker-compose up --build
 <img src="picture/jaeger.png" width="60%">
 
 <img src="picture/loki.png" width="60%">
+
+<img src="picture/combined.png" width="60%">

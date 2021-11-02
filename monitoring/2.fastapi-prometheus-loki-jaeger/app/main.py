@@ -1,6 +1,4 @@
-from fastapi import FastAPI
-from fastapi.logger import logger as fastapi_logger
-from pythonjsonlogger import jsonlogger
+from fastapi import FastAPI, Request
 from jaeger_client import Config as jaeger_config
 from opentracing.scope_managers.contextvars import ContextVarsScopeManager
 from opentracing_instrumentation.client_hooks import install_all_patches
@@ -11,38 +9,36 @@ import logging
 import random
 import requests
 import time
+import json_logging
 
-class CustomJsonFormatter(jsonlogger.JsonFormatter):
-    def add_fields(self, log_record, record, message_dict):
-        super(CustomJsonFormatter, self).add_fields(log_record, record, message_dict)
-        if not log_record.get('timestamp'):
-            now = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
-            log_record['timestamp'] = now
-        if log_record.get('level'):
-            log_record['level'] = log_record['level'].upper()
-        else:
-            log_record['level'] = record.levelname
-
-logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
-gunicorn_error_logger = logging.getLogger('gunicorn.error')
-uvicorn_access_logger = logging.getLogger('uvicorn.access')
-uvicorn_logger = logging.getLogger('uvicorn')
-uvicorn_error_logger = logging.getLogger('uvicorn.error')
-logHandler = logging.StreamHandler()
-formatter = CustomJsonFormatter('%(timestamp)s %(level)s %(name)s %(message)s')
-logHandler.setFormatter(formatter)
-logger.handlers = [logHandler]
-gunicorn_error_logger.handlers = logger.handlers
-uvicorn_access_logger.handlers = logger.handlers
-fastapi_logger.handlers = logger.handlers
-uvicorn_error_logger.handlers = logger.handlers
+logger.setLevel(logging.INFO)
+
+class JSONLogWebFormatter(json_logging.JSONLogFormatter):
+    def _format_log_object(self, record, request_util):
+        json_log_object = super(JSONLogWebFormatter, self)._format_log_object(record, request_util)
+        if 'correlation_id' not in json_log_object:
+            json_log_object.update({
+                'correlation_id': request_util.get_correlation_id(within_formatter=True),
+            })
+        if json_log_object['logger'] == 'jaeger_tracing' and 'Reporting span ' in json_log_object['msg']:
+            splitted = json_log_object['msg'].split('Reporting span ')[1].split(':')[0]
+            json_log_object.update({
+                'trace_message': f'traceID={splitted}',
+                'traceID': splitted,
+            })
+        return json_log_object
 
 app = FastAPI(
     title='test-app',
     description='test-app',
     version='0.1',
 )
+
+json_logging.CREATE_CORRELATION_ID_IF_NOT_EXISTS = True
+json_logging.init_fastapi(enable_json=True, custom_formatter=JSONLogWebFormatter)
+json_logging.init_request_instrument(app)
+logger.handlers = logging.getLogger('json_logging').handlers
 
 opentracing_config = jaeger_config(
     config={
@@ -64,7 +60,7 @@ app.add_middleware(PrometheusMiddleware)
 app.add_route('/metrics', handle_metrics)
 
 @app.get('/')
-def root(username: str):
+def root(username: str, request: Request):
     random_sleep = random.random()
     logger.info(f'{username}, random generated {random_sleep}')
     time.sleep(random_sleep)
