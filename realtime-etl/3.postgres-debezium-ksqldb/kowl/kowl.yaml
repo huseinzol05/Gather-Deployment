@@ -1,0 +1,13 @@
+kafka:
+  brokers:
+    - broker:9092
+  schemaRegistry:
+    enabled: true
+    urls: ["http://schema-registry:8081"]
+
+connect:
+  enabled: true
+  clusters:
+    - name: debezium
+      url: http://debezium:8083
+      
