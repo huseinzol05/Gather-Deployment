@@ -8,6 +8,7 @@ Gathers scalable tensorflow and self-hosted infrastructure deployment, Husein Go
   * [Simple Backend](#simple-backend)
   * [Apache stack](#apache-stack)
   * [simple data pipeline](#simple-data-pipeline)
+  * [Realtime ETL](#realtime-etl)
   * [Unit test](#unit-test)
   * [Stress test](#stress-test)
   * [Monitoring](#monitoring)
@@ -167,6 +168,11 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 1. Streaming Tweepy to Elasticsearch
 2. Scheduled crawler using Luigi Spotify to Elasticsearch
 3. Airflow to Elasticsearch
+
+## [Realtime ETL](#realtime-etl)
+
+1. MySQL -> Apache NiFi -> Apache Hive
+2. PostgreSQL CDC -> Debezium -> KsqlDB
 
 ## [Unit test](unit-test)
 
