@@ -1,8 +1,14 @@
 # Practice-Pyspark
 
-Gathers data science and machine learning problem solving using PySpark and Hadoop.
+Gathers data science and machine learning problem solving using PySpark, Hadoop, Hive Metastore, Delta Lake, PySpark ML and PySpark NLP.
 
 <img src="https://cdn-images-1.medium.com/max/1600/0*8D301fHKliN6r5Km.png" align="right" width="20%">
+
+## Notebooks
+
+1. [sql.ipynb](notebook/1.sql.ipynb).
+2. [simple-hdfs.ipynb](notebook/2.simple-hdfs.ipynb).
+3. [simple-hive.ipynb](notebook/3.simple-hive.ipynb).
 
 ## How-to
 
