@@ -1,0 +1,48 @@
+FROM ubuntu:20.04 AS base
+
+ARG PYTHON_VERSION=3.8
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
+
+RUN apt-get update
+
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
+
+RUN apt-get install -y \
+    openjdk-8-jdk \
+    wget bzip2 \
+    python3-pip
+
+ENV PYTHON_VERSION $PYTHON_VERSION
+ENV SCALA_VERSION 2.11.8
+ENV SPARK_VERSION 3.2.0
+ENV SPARK_BUILD "spark-${SPARK_VERSION}-bin-hadoop2.7"
+ENV SPARK_BUILD_URL "https://dist.apache.org/repos/dist/release/spark/spark-${SPARK_VERSION}/${SPARK_BUILD}.tgz"
+RUN wget $SPARK_BUILD_URL -O /tmp/spark.tgz && \
+    tar -C /opt -xf /tmp/spark.tgz && \
+    mv /opt/$SPARK_BUILD /opt/spark && \
+    rm /tmp/spark.tgz
+ENV SPARK_HOME /opt/spark
+ENV PATH $SPARK_HOME/bin:$PATH
+ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.9.2-src.zip:/opt/spark/python/lib/pyspark.zip:$PYTHONPATH
+ENV PYSPARK_PYTHON python
+
+RUN pip3 install pandas numpy matplotlib seaborn scipy jupyter
+
+ENV PYSPARK_PYTHON python3
+ENV PYSPARK_DRIVER_PYTHON python3
+
+RUN apt install screen unzip -y
+
+RUN wget https://cdn.mysql.com/archives/mysql-connector-java-5.1/mysql-connector-java-5.1.49.zip -O mysql.zip && \
+    unzip mysql.zip && \
+    cp mysql-connector-java-5.1.49/mysql-connector-java-5.1.49.jar $SPARK_HOME/jars
+
+RUN wget https://jdbc.postgresql.org/download/postgresql-42.3.0.jar && \
+    cp postgresql-42.3.0.jar $SPARK_HOME/jars
+
+ADD hive-site.xml $SPARK_HOME/conf
+
+WORKDIR $SPARK_HOME
+
+COPY . $SPARK_HOME

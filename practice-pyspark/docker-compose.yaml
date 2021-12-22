@@ -1,0 +1,29 @@
+version: '2.3'
+services:
+  master:
+    image: spark
+    command: bash cluster.sh
+    volumes:
+      - ./notebook:/home/data
+    environment:
+      - MASTER_PORT_7077_TCP_ADDR=master
+      - MASTER_PORT_7077_TCP_PORT=7077
+    ports:
+      - '8081:8080'
+      - '8089:8089'
+      - '7077:7077'
+      - '4040:4040'
+    container_name: master
+  worker:
+    image: spark
+    command: bash -c "/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker master:7077"
+    environment:
+      - MASTER_PORT_7077_TCP_ADDR=master
+      - MASTER_PORT_7077_TCP_PORT=7077
+    volumes:
+      - ./notebook:/home/data
+    depends_on:
+      - master
+    links:
+      - master
+    scale: 1
