@@ -15,7 +15,7 @@ RUN apt-get install -y \
 
 ENV PYTHON_VERSION $PYTHON_VERSION
 ENV SCALA_VERSION 2.11.8
-ENV SPARK_VERSION 3.2.0
+ENV SPARK_VERSION 3.1.2
 ENV SPARK_BUILD "spark-${SPARK_VERSION}-bin-hadoop2.7"
 ENV SPARK_BUILD_URL "https://dist.apache.org/repos/dist/release/spark/spark-${SPARK_VERSION}/${SPARK_BUILD}.tgz"
 RUN wget $SPARK_BUILD_URL -O /tmp/spark.tgz && \
@@ -24,10 +24,8 @@ RUN wget $SPARK_BUILD_URL -O /tmp/spark.tgz && \
     rm /tmp/spark.tgz
 ENV SPARK_HOME /opt/spark
 ENV PATH $SPARK_HOME/bin:$PATH
-ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.9.2-src.zip:/opt/spark/python/lib/pyspark.zip:$PYTHONPATH
+ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.9-src.zip:/opt/spark/python/lib/pyspark.zip:$PYTHONPATH
 ENV PYSPARK_PYTHON python
-
-RUN pip3 install pandas numpy matplotlib seaborn scipy jupyter
 
 ENV PYSPARK_PYTHON python3
 ENV PYSPARK_DRIVER_PYTHON python3
@@ -42,6 +40,10 @@ RUN wget https://jdbc.postgresql.org/download/postgresql-42.3.0.jar && \
     cp postgresql-42.3.0.jar $SPARK_HOME/jars
 
 ADD hive-site.xml $SPARK_HOME/conf
+
+RUN pip3 install pandas numpy matplotlib seaborn scipy jupyter importlib_metadata spark-nlp==3.3.4
+
+RUN pip3 install delta-spark==1.0.0 --no-deps
 
 WORKDIR $SPARK_HOME
 

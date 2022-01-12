@@ -6,9 +6,10 @@ Gathers data science and machine learning problem solving using PySpark, Hadoop,
 
 ## Notebooks
 
-1. [sql.ipynb](notebook/1.sql.ipynb).
-2. [simple-hdfs.ipynb](notebook/2.simple-hdfs.ipynb).
-3. [simple-hive.ipynb](notebook/3.simple-hive.ipynb).
+1. Simple PySpark SQL, [sql.ipynb](notebook/1.sql.ipynb).
+2. Simple download dataframe from HDFS, [simple-hdfs.ipynb](notebook/2.simple-hdfs.ipynb). 
+3. Simple PySpark SQL with Hive Metastore, [simple-hive.ipynb](notebook/3.simple-hive.ipynb).
+4. Simple Delta lake, [4.simple-delta-lake.ipynb](notebook/4.simple-delta-lake.ipynb).
 
 ## How-to
 
