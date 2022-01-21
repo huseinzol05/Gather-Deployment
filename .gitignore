@@ -9,3 +9,5 @@
 *supervisord.log
 *supervisord.pid
 **/prometheus-data/*
+**departuredelays.csv
+*.Trash*

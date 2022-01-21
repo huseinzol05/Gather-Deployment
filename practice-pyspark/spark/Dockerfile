@@ -13,6 +13,27 @@ RUN apt-get install -y \
     wget bzip2 \
     python3-pip
 
+ENV HADOOP_HOME /opt/hadoop
+
+ENV HADOOP_VERSION 3.2.2
+
+RUN wget http://www-eu.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz && \
+    tar -xzf hadoop-${HADOOP_VERSION}.tar.gz && \
+    mv hadoop-${HADOOP_VERSION} $HADOOP_HOME && \
+    for user in hadoop hdfs yarn mapred; do \
+        useradd -U -M -d /opt/hadoop/ --shell /bin/bash ${user}; \
+    done && \
+    for user in root hdfs yarn mapred; do \
+        usermod -G hadoop ${user}; \
+    done && \
+    echo "export JAVA_HOME=$JAVA_HOME" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
+    echo "export HDFS_DATANODE_USER=root" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
+    echo "export HDFS_NAMENODE_USER=root" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
+    echo "export HDFS_SECONDARYNAMENODE_USER=root" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh && \
+    echo "export YARN_RESOURCEMANAGER_USER=root" >> $HADOOP_HOME/etc/hadoop/yarn-env.sh && \
+    echo "export YARN_NODEMANAGER_USER=root" >> $HADOOP_HOME/etc/hadoop/yarn-env.sh && \
+    echo "PATH=$PATH:$HADOOP_HOME/bin" >> ~/.bashrc
+
 ENV PYTHON_VERSION $PYTHON_VERSION
 ENV SCALA_VERSION 2.11.8
 ENV SPARK_VERSION 3.1.2
@@ -44,6 +65,8 @@ ADD hive-site.xml $SPARK_HOME/conf
 RUN pip3 install pandas numpy matplotlib seaborn scipy jupyter importlib_metadata spark-nlp==3.3.4
 
 RUN pip3 install delta-spark==1.0.0 --no-deps
+
+ENV SHELL /bin/bash
 
 WORKDIR $SPARK_HOME
 

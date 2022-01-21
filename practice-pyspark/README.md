@@ -10,6 +10,8 @@ Gathers data science and machine learning problem solving using PySpark, Hadoop,
 2. Simple download dataframe from HDFS, [simple-hdfs.ipynb](notebook/2.simple-hdfs.ipynb). 
 3. Simple PySpark SQL with Hive Metastore, [simple-hive.ipynb](notebook/3.simple-hive.ipynb).
 4. Simple Delta lake, [4.simple-delta-lake.ipynb](notebook/4.simple-delta-lake.ipynb).
+5. Delete Update Upsert using Delta, [5.delta-delete-update-upsert.ipynb](notebook/5.delta-delete-update-upsert.ipynb).
+6. Structured streaming using Delta, [6.delta-structured-streaming-data.ipynb](notebook/6.delta-structured-streaming-data.ipynb).
 
 ## How-to
 
