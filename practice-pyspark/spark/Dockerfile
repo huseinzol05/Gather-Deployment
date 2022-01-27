@@ -60,6 +60,18 @@ RUN wget https://cdn.mysql.com/archives/mysql-connector-java-5.1/mysql-connector
 RUN wget https://jdbc.postgresql.org/download/postgresql-42.3.0.jar && \
     cp postgresql-42.3.0.jar $SPARK_HOME/jars
 
+RUN wget https://repo1.maven.org/maven2/org/apache/spark/spark-sql-kafka-0-10_2.12/3.1.2/spark-sql-kafka-0-10_2.12-3.1.2.jar && \
+    cp spark-sql-kafka-0-10_2.12-3.1.2.jar $SPARK_HOME/jars
+
+RUN wget https://repo1.maven.org/maven2/org/apache/spark/spark-token-provider-kafka-0-10_2.12/3.1.2/spark-token-provider-kafka-0-10_2.12-3.1.2.jar && \
+    cp spark-token-provider-kafka-0-10_2.12-3.1.2.jar $SPARK_HOME/jars
+
+RUN wget https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/2.6.0/kafka-clients-2.6.0.jar && \
+    cp kafka-clients-2.6.0.jar $SPARK_HOME/jars
+
+RUN wget https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.6.2/commons-pool2-2.6.2.jar && \
+    cp commons-pool2-2.6.2.jar $SPARK_HOME/jars
+
 ADD hive-site.xml $SPARK_HOME/conf
 
 RUN pip3 install pandas numpy matplotlib seaborn scipy jupyter importlib_metadata spark-nlp==3.3.4

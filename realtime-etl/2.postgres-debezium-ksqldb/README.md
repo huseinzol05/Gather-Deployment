@@ -10,7 +10,7 @@ docker-compose -f postgres.yaml up -d
 
 ```bash
 docker exec postgresql bash -c \
-'PGPASSWORD=postgres psql -d postgres -U postgres -c "(cat /bitnami/postgresql/conf/table.sql)"'
+'PGPASSWORD=postgres psql -d postgres -U postgres -c "$(cat /bitnami/postgresql/conf/table.sql)"'
 ```
 
 Or to get into psql,
