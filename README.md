@@ -14,6 +14,7 @@ Gathers scalable tensorflow and self-hosted infrastructure deployment, Husein Go
   * [Monitoring](#monitoring)
   * [Mapping](#mapping)
   * [Miscellaneous](#Miscellaneous)
+  * [Practice PySpark](#practice-pyspark)
   * [Printscreen](#printscreen)
 
 ## Requirements
@@ -204,6 +205,16 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 5. AutoPEP8
 6. Graph function dependencies
 7. MLFlow
+
+## [Practice PySpark](practice-pyspark)
+
+1. Simple PySpark SQL.
+2. Simple create PySpark DataFrame from HDFS.
+3. Simple PySpark SQL with Hive Metastore.
+4. Simple Delta lake.
+5. Simple Delete Update Upsert using Delta lake.
+6. Simple structured streaming with Upsert using Delta streaming.
+7. Kafka structured streaming from PostgreSQL CDC using Debezium and Upsert using Delta streaming.
 
 ## Printscreen
 
