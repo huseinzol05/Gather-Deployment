@@ -39,14 +39,13 @@ ENV SCALA_VERSION 2.11.8
 ENV SPARK_VERSION 3.1.2
 ENV SPARK_BUILD "spark-${SPARK_VERSION}-bin-hadoop2.7"
 ENV SPARK_BUILD_URL "https://dist.apache.org/repos/dist/release/spark/spark-${SPARK_VERSION}/${SPARK_BUILD}.tgz"
-RUN wget $SPARK_BUILD_URL -O /tmp/spark.tgz && \
-    tar -C /opt -xf /tmp/spark.tgz && \
-    mv /opt/$SPARK_BUILD /opt/spark && \
+RUN wget $SPARK_BUILD_URL -O spark.tgz && \
+    tar -C /opt -xf spark.tgz && \
+    mv $SPARK_BUILD spark
     rm /tmp/spark.tgz
 ENV SPARK_HOME /opt/spark
 ENV PATH $SPARK_HOME/bin:$PATH
 ENV PYTHONPATH /opt/spark/python/lib/py4j-0.10.9-src.zip:/opt/spark/python/lib/pyspark.zip:$PYTHONPATH
-ENV PYSPARK_PYTHON python
 
 ENV PYSPARK_PYTHON python3
 ENV PYSPARK_DRIVER_PYTHON python3

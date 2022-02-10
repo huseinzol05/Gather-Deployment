@@ -34,6 +34,14 @@ Gathers data science and machine learning problem solving using PySpark, Hadoop,
 
 - Kafka structured streaming from PostgreSQL CDC using Debezium and Upsert using Delta streaming.
 
+8. PySpark ML text classification, [8.text-classification.ipynb](notebook/8.text-classification.ipynb).
+
+- Text classification using Logistic regression and multinomial in PySpark ML.
+
+9. PySpark ML word vector, [9.word-vector.ipynb](notebook/9.word-vector.ipynb).
+
+- Word vector in PySpark ML.
+
 ## How-to
 
 1. Run HDFS and PostgreSQL for Hive Metastore,
