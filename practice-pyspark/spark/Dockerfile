@@ -39,9 +39,9 @@ ENV SCALA_VERSION 2.11.8
 ENV SPARK_VERSION 3.1.2
 ENV SPARK_BUILD "spark-${SPARK_VERSION}-bin-hadoop2.7"
 ENV SPARK_BUILD_URL "https://dist.apache.org/repos/dist/release/spark/spark-${SPARK_VERSION}/${SPARK_BUILD}.tgz"
-RUN wget $SPARK_BUILD_URL -O spark.tgz && \
-    tar -C /opt -xf spark.tgz && \
-    mv $SPARK_BUILD spark
+RUN wget $SPARK_BUILD_URL -O /tmp/spark.tgz && \
+    tar -C /opt -xf /tmp/spark.tgz && \
+    mv /opt/$SPARK_BUILD /opt/spark && \
     rm /tmp/spark.tgz
 ENV SPARK_HOME /opt/spark
 ENV PATH $SPARK_HOME/bin:$PATH
@@ -71,11 +71,16 @@ RUN wget https://repo1.maven.org/maven2/org/apache/kafka/kafka-clients/2.6.0/kaf
 RUN wget https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.6.2/commons-pool2-2.6.2.jar && \
     cp commons-pool2-2.6.2.jar $SPARK_HOME/jars
 
+RUN wget https://raw.githubusercontent.com/yahoo/TensorFlowOnSpark/master/lib/tensorflow-hadoop-1.0-SNAPSHOT.jar && \
+    cp tensorflow-hadoop-1.0-SNAPSHOT.jar $SPARK_HOME/jars
+
 ADD hive-site.xml $SPARK_HOME/conf
 
 RUN pip3 install pandas numpy matplotlib seaborn scipy jupyter importlib_metadata spark-nlp==3.3.4
 
 RUN pip3 install delta-spark==1.0.0 --no-deps
+
+RUN pip3 install tensorflowonspark tensorflow==2.5.0 tensorflow-datasets
 
 ENV SHELL /bin/bash
 
