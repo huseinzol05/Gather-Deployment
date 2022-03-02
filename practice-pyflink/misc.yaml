@@ -1,0 +1,18 @@
+version: '2.3'
+services:
+  hdfs:
+    build:
+      context: hdfs
+    command: bash start.sh
+    container_name: hdfs
+    ports:
+      - '9000:9000'
+      - '9870:9870'
+
+  postgres:
+    image: postgres:11-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
