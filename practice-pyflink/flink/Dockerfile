@@ -49,6 +49,7 @@ RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/org/apache/fli
 RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-elasticsearch6_2.11/${FLINK_VERSION}/flink-sql-connector-elasticsearch6_2.11-${FLINK_VERSION}.jar
 
 RUN wget -P $FLINK_HOME/lib/ https://repo1.maven.org/maven2/org/apache/hive/hive-exec/3.1.2/hive-exec-3.1.2.jar
+RUN wget -P $FLINK_HOME/lib/ https://repo1.maven.org/maven2/org/apache/thrift/libfb303/0.9.3/libfb303-0.9.3.jar
 RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar
 RUN wget -P $FLINK_HOME/lib https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
 
@@ -69,6 +70,8 @@ COPY flink-conf.yaml $FLINK_HOME/conf/
 RUN pip3 install jupyter 
 
 RUN pip3 install pytz pyarrow pandas
+
+ADD hive-site.xml /opt/hive-conf/
 
 EXPOSE 8081 6123
 ENTRYPOINT ["bash", "/docker-entrypoint.sh"]

@@ -34,3 +34,9 @@ Feel free to scale up the workers,
 ```bash
 docker-compose scale taskmanager=2
 ```
+
+To access Flink SQL CLI,
+
+```
+docker exec -it flink /opt/flink/bin/sql-client.sh
+```
