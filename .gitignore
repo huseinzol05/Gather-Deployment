@@ -13,3 +13,5 @@
 *.Trash*
 *.jar
 practice-pyspark/notebook/model
+*.pkl
+*.output-udf.csv*
