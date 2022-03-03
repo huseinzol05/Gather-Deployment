@@ -40,3 +40,11 @@ To access Flink SQL CLI,
 ```
 docker exec -it flink /opt/flink/bin/sql-client.sh
 ```
+
+4. Run Kafka and Debezium for PostgreSQL CDC,
+
+```bash
+docker-compose -f kafka.yaml up
+docker exec postgresql bash -c \
+'PGPASSWORD=postgres psql -d postgres -U postgres -c "$(cat /bitnami/postgresql/conf/table.sql)"'
+```

@@ -60,7 +60,7 @@ PGPASSWORD=postgres docker exec -it postgres psql -U postgres -d postgres -c "$(
 3. Run Kafka and Debezium for PostgreSQL CDC,
 
 ```bash
-docker-compose -f kafka.yaml up -d
+docker-compose -f kafka.yaml up
 docker exec postgresql bash -c \
 'PGPASSWORD=postgres psql -d postgres -U postgres -c "$(cat /bitnami/postgresql/conf/table.sql)"'
 ```

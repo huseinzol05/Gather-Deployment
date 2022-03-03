@@ -54,7 +54,6 @@ RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/mysql/mysql-co
 RUN wget -P $FLINK_HOME/lib https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
 
 ENV PATH $FLINK_HOME/bin:$PATH
-ENV PYTHONPATH $FLINK_HOME/opt/python/pyflink.zip:$FLINK_HOME/opt/python/py4j-0.10.8.1-src.zip:$FLINK_HOME/opt/python/cloudpickle-1.2.2-src.zip:$PYTHONPATH
 
 COPY docker-entrypoint.sh /
 
@@ -67,11 +66,22 @@ WORKDIR $FLINK_HOME
 
 COPY flink-conf.yaml $FLINK_HOME/conf/
 
-RUN pip3 install jupyter 
+ENV HADOOP_HOME /opt/hadoop
+ENV HADOOP_VERSION 3.2.2
 
-RUN pip3 install pytz pyarrow pandas
+RUN wget http://www-eu.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz && \
+    tar -xzf hadoop-${HADOOP_VERSION}.tar.gz && \
+    mv hadoop-${HADOOP_VERSION} $HADOOP_HOME
+
+ENV PATH $HADOOP_HOME/bin:$PATH
 
 ADD hive-site.xml /opt/hive-conf/
+
+RUN pip3 install jupyter apache-flink==1.13.6
+
+RUN pip3 install pydoop
+
+RUN pip3 install sklearn tqdm
 
 EXPOSE 8081 6123
 ENTRYPOINT ["bash", "/docker-entrypoint.sh"]

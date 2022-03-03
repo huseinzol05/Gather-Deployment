@@ -1,0 +1,80 @@
+# https://github.com/bitnami/bitnami-docker-postgresql/blob/master/docker-compose-replication.yml
+
+version: '2'
+
+services:
+  postgresql:
+    image: docker.io/bitnami/postgresql:11
+    container_name: postgresql
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_master_data:/bitnami/postgresql'
+      - './postgres:/bitnami/postgresql/conf/'
+    environment:
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=postgres
+      - ALLOW_EMPTY_PASSWORD=yes
+  
+  zookeeper:
+    image: confluentinc/cp-zookeeper:6.2.0
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  broker:
+    image: confluentinc/cp-kafka:6.2.0
+    hostname: broker
+    container_name: broker
+    depends_on:
+      - zookeeper
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://broker:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+  
+  debezium:
+    image: debezium/connect:1.2.2.Final
+    container_name: debezium
+    hostname: debezium
+    depends_on:
+      - broker
+    ports:
+      - "8083:8083"
+    environment:
+      HOST_NAME: '0.0.0.0'
+      ADVERTISED_HOST_NAME: debezium
+      BOOTSTRAP_SERVERS: 'broker:9092'
+      GROUP_ID: '1'
+      CONFIG_STORAGE_TOPIC: debezium_configs
+      OFFSET_STORAGE_TOPIC: debezium_offsets
+      STATUS_STORAGE_TOPIC: debezium_statuses
+
+  kowl:
+    image: quay.io/cloudhut/kowl:master
+    container_name: kowl
+    command: 
+      - "--config.filepath=/config/kowl.yaml"
+    restart: always
+    depends_on:
+      - broker
+      - debezium
+    volumes:
+      - './kowl:/config/'
+    ports:
+      - "8082:8080"
+
+volumes:
+  postgresql_master_data:
+    driver: local
+  

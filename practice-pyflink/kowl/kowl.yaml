@@ -1,0 +1,10 @@
+kafka:
+  brokers:
+    - broker:9092
+
+connect:
+  enabled: true
+  clusters:
+    - name: debezium
+      url: http://debezium:8083
+      
