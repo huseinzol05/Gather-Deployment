@@ -48,7 +48,7 @@ Gathers data science and machine learning problem solving using PySpark, Hadoop,
 
 ```bash
 docker container rm -f hdfs postgres
-docker-compose -f misc.yaml up --build -d
+docker-compose -f misc.yaml up --build
 ```
 
 2. Create Hive metastore in PostgreSQL,

@@ -26,7 +26,7 @@ docker build -t flink flink
 4. Run docker compose,
 
 ```bash
-docker-compose up -d
+docker-compose up
 ```
 
 Feel free to scale up the workers,
@@ -47,4 +47,30 @@ docker exec -it flink /opt/flink/bin/sql-client.sh
 docker-compose -f kafka.yaml up
 docker exec postgresql bash -c \
 'PGPASSWORD=postgres psql -d postgres -U postgres -c "$(cat /bitnami/postgresql/conf/table.sql)"'
+```
+
+5. Add PostgreSQL CDC,
+
+```bash
+curl --location --request POST http://localhost:8083/connectors/ \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "employee-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "plugin.name": "pgoutput",
+    "database.hostname": "postgresql",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "postgres",
+    "database.dbname" : "postgres",
+    "database.server.name": "employee",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "true",
+    "table.whitelist": "public.employee,public.salary",
+    "tombstones.on.delete": "false",
+    "decimal.handling.mode": "double"
+  }
+}'
 ```

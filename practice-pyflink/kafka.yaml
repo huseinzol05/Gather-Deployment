@@ -21,6 +21,7 @@ services:
     image: confluentinc/cp-zookeeper:6.2.0
     hostname: zookeeper
     container_name: zookeeper
+    restart: always
     ports:
       - "2181:2181"
     environment:
@@ -30,6 +31,7 @@ services:
     image: confluentinc/cp-kafka:6.2.0
     hostname: broker
     container_name: broker
+    restart: always
     depends_on:
       - zookeeper
     ports:
@@ -47,6 +49,7 @@ services:
     image: debezium/connect:1.2.2.Final
     container_name: debezium
     hostname: debezium
+    restart: always
     depends_on:
       - broker
     ports:
