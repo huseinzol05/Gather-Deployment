@@ -209,12 +209,74 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 ## [Practice PySpark](practice-pyspark)
 
 1. Simple PySpark SQL.
-2. Simple create PySpark DataFrame from HDFS.
+
+- Simple PySpark SQL.
+
+2. Simple download dataframe from HDFS. 
+
+- Create PySpark DataFrame from HDFS.
+
 3. Simple PySpark SQL with Hive Metastore.
+
+- Use PySpark SQL with Hive Metastore.
+
 4. Simple Delta lake.
-5. Simple Delete Update Upsert using Delta lake.
-6. Simple structured streaming with Upsert using Delta streaming.
-7. Kafka structured streaming from PostgreSQL CDC using Debezium and Upsert using Delta streaming.
+
+- Simple Delta lake.
+
+5. Delete Update Upsert using Delta.
+
+- Simple Delete Update Upsert using Delta lake.
+
+6. Structured streaming using Delta.
+
+- Simple structured streaming with Upsert using Delta streaming.
+
+7. Kafka Structured streaming using Delta.
+
+- Kafka structured streaming from PostgreSQL CDC using Debezium and Upsert using Delta streaming.
+
+8. PySpark ML text classification.
+
+- Text classification using Logistic regression and multinomial in PySpark ML.
+
+9. PySpark ML word vector.
+
+- Word vector in PySpark ML.
+
+## [Practice PyFlink](practice-pyflink)
+
+1. Simple Word Count to HDFS.
+
+- Simple Table API to do Word Count and sink into Parquet format in HDFS.
+
+2. Simple Word Count to PostgreSQL.
+
+- Simple Table API to do Word Count and sink into PostgreSQL using JDBC.
+
+3. Simple Word Count to Kafka.
+
+- Simple Table API to do Word Count and sink into Kafka.
+
+4. Simple text classification to HDFS.
+
+- Load trained text classification model using UDF to classify sentiment and sink into Parquet format in HDFS.
+
+5. Simple text classification to PostgreSQL.
+
+- Load trained text classification model using UDF to classify sentiment and sink into PostgreSQL.
+
+6. Simple text classification to Kafka.
+
+- Load trained text classification model using UDF to classify sentiment and sink into Kafka.
+
+7. Simple real time text classification upsert to PostgreSQL.
+
+- Simple real time text classification from Debezium CDC and upsert into PostgreSQL.
+
+8. Simple real time text classification upsert to Kafka.
+
+- Simple real time text classification from Debezium CDC and upsert into Kafka Upsert.
 
 ## Printscreen
 
