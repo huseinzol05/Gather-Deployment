@@ -6,35 +6,35 @@ Gathers data science and machine learning problem solving using PyFlink.
 
 ## Notebooks
 
-1. Simple Word Count to HDFS, [tableapi-word-count-hdfs.ipynb](notebook/1.tableapi-word-count-hdfs.ipynb).
+1. Simple Word Count to HDFS, [1.tableapi-word-count-hdfs.ipynb](notebook/1.tableapi-word-count-hdfs.ipynb).
 
 - Simple Table API to do Word Count and sink into Parquet format in HDFS.
 
-2. Simple Word Count to PostgreSQL, [tableapi-word-count-postgres.ipynb](notebook/2.tableapi-word-count-postgres.ipynb).
+2. Simple Word Count to PostgreSQL, [2.tableapi-word-count-postgres.ipynb](notebook/2.tableapi-word-count-postgres.ipynb).
 
 - Simple Table API to do Word Count and sink into PostgreSQL using JDBC.
 
-3. Simple Word Count to Kafka, [tableapi-word-count-kafka.ipynb](notebook/3.tableapi-word-count-postgres.ipynb).
+3. Simple Word Count to Kafka, [3.tableapi-word-count-kafka.ipynb](notebook/3.tableapi-word-count-postgres.ipynb).
 
 - Simple Table API to do Word Count and sink into Kafka.
 
-4. Simple text classification to HDFS, [tableapi-malay-sentiment-classifer-hdfs.ipynb](notebook/4.tableapi-malay-sentiment-classifer-hdfs.ipynb).
+4. Simple text classification to HDFS, [4.tableapi-malay-sentiment-classifier-hdfs.ipynb](notebook/4.tableapi-malay-sentiment-classifier-hdfs.ipynb).
 
 - Load trained text classification model using UDF to classify sentiment and sink into Parquet format in HDFS.
 
-5. Simple text classification to PostgreSQL, [tableapi-malay-sentiment-classifer-postgres.ipynb](notebook/5.tableapi-malay-sentiment-classifer-postgres.ipynb).
+5. Simple text classification to PostgreSQL, [tableapi-malay-sentiment-classifier-postgres.ipynb](notebook/5.tableapi-malay-sentiment-classifier-postgres.ipynb).
 
 - Load trained text classification model using UDF to classify sentiment and sink into PostgreSQL.
 
-6. Simple text classification to Kafka, [tableapi-malay-sentiment-classifer-kafka.ipynb](notebook/6.tableapi-malay-sentiment-classifer-kafka.ipynb).
+6. Simple text classification to Kafka, [tableapi-malay-sentiment-classifier-kafka.ipynb](notebook/6.tableapi-malay-sentiment-classifier-kafka.ipynb).
 
 - Load trained text classification model using UDF to classify sentiment and sink into Kafka.
 
-7. Simple real time text classification upsert to PostgreSQL, [tableapi-malay-sentiment-classifer-kafka-upsert-postgres.ipynb](notebook/7.tableapi-malay-sentiment-classifer-kafka-upsert-postgres.ipynb).
+7. Simple real time text classification upsert to PostgreSQL, [tableapi-malay-sentiment-classifier-kafka-upsert-postgres.ipynb](notebook/7.tableapi-malay-sentiment-classifier-kafka-upsert-postgres.ipynb).
 
 - Simple real time text classification from Debezium CDC and upsert into PostgreSQL.
 
-8. Simple real time text classification upsert to Kafka, [tableapi-malay-sentiment-classifer-kafka-upsert-kafka.ipynb](notebook/8.tableapi-malay-sentiment-classifer-kafka-upsert-kafka.ipynb).
+8. Simple real time text classification upsert to Kafka, [tableapi-malay-sentiment-classifier-kafka-upsert-kafka.ipynb](notebook/8.tableapi-malay-sentiment-classifier-kafka-upsert-kafka.ipynb).
 
 - Simple real time text classification from Debezium CDC and upsert into Kafka Upsert.
 
