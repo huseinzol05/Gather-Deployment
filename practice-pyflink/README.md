@@ -38,6 +38,18 @@ Gathers data science and machine learning problem solving using PyFlink.
 
 - Simple real time text classification from Debezium CDC and upsert into Kafka Upsert.
 
+9. Simple Word Count to Apache Hudi, [tableapi-word-count-hudi.ipynb](notebook/9.tableapi-word-count-hudi.ipynb).
+
+- Simple Table API to do Word Count and sink into Apache Hudi in HDFS.
+
+10. Simple text classification to Apache Hudi, [tableapi-malay-sentiment-classifer-hudi.ipynb](notebook/10.tableapi-malay-sentiment-classifer-hdfs.ipynb).
+
+- Load trained text classification model using UDF to classify sentiment and sink into Apache Hudi in HDFS.
+
+11. Simple real time text classification upsert to Apache Hudi, [tableapi-malay-sentiment-classifer-kafka-upsert-hudi.ipynb](notebook/11.tableapi-malay-sentiment-classifer-kafka-upsert-hudi.ipynb).
+
+- Simple real time text classification from Debezium CDC and upsert into Apache Hudi.
+
 ## How-to
 
 1. Run HDFS and PostgreSQL for Hive Metastore,
@@ -81,6 +93,7 @@ docker exec -it flink /opt/flink/bin/sql-client.sh
 4. Run Kafka and Debezium for PostgreSQL CDC,
 
 ```bash
+docker container rm -f debezium broker
 docker-compose -f kafka.yaml up
 docker exec postgresql bash -c \
 'PGPASSWORD=postgres psql -d postgres -U postgres -c "$(cat /bitnami/postgresql/conf/table.sql)"'

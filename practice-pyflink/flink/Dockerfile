@@ -36,8 +36,7 @@ RUN wget https://downloads.apache.org/flink/${flink_dist}/${flink_dist}-bin-scal
     tar -zxf flink.tgz && \
     cp -r ${flink_dist}/* $FLINK_HOME/
 
-RUN wget https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop2-uber/2.8.3-1.8.0/flink-shaded-hadoop2-uber-2.8.3-1.8.0.jar && \
-    cp flink-shaded-hadoop2-uber-2.8.3-1.8.0.jar $FLINK_HOME/lib
+RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop2-uber/2.8.3-1.8.0/flink-shaded-hadoop2-uber-2.8.3-1.8.0.jar
 
 RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-avro-confluent-registry/${FLINK_VERSION}/flink-sql-avro-confluent-registry-${FLINK_VERSION}.jar
 RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/org/apache/flink/flink-parquet_2.11/${FLINK_VERSION}/flink-parquet_2.11-${FLINK_VERSION}.jar
@@ -53,6 +52,8 @@ RUN wget -P $FLINK_HOME/lib/ https://repo1.maven.org/maven2/org/apache/thrift/li
 RUN wget -P $FLINK_HOME/lib/ https://repo.maven.apache.org/maven2/mysql/mysql-connector-java/8.0.19/mysql-connector-java-8.0.19.jar
 RUN wget -P $FLINK_HOME/lib https://jdbc.postgresql.org/download/postgresql-42.2.19.jar
 
+RUN wget -P $FLINK_HOME/lib https://repo.maven.apache.org/maven2/org/apache/hudi/hudi-flink-bundle_2.11/0.10.1/hudi-flink-bundle_2.11-0.10.1.jar
+
 ENV PATH $FLINK_HOME/bin:$PATH
 
 COPY docker-entrypoint.sh /
@@ -67,7 +68,7 @@ WORKDIR $FLINK_HOME
 COPY flink-conf.yaml $FLINK_HOME/conf/
 
 ENV HADOOP_HOME /opt/hadoop
-ENV HADOOP_VERSION 3.2.2
+ENV HADOOP_VERSION 3.2.3
 
 RUN wget http://www-eu.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz && \
     tar -xzf hadoop-${HADOOP_VERSION}.tar.gz && \
