@@ -1,6 +1,6 @@
 # Gather-Deployment
 
-Gathers scalable tensorflow and self-hosted infrastructure deployment, Husein Go-To for development, 100% Docker.
+Gathers scalable Tensorflow, Python infrastructure deployment and practices, 100% Docker.
 
 ## Table of contents
   * [Requirements](#Requirements)
@@ -15,6 +15,7 @@ Gathers scalable tensorflow and self-hosted infrastructure deployment, Husein Go
   * [Mapping](#mapping)
   * [Miscellaneous](#Miscellaneous)
   * [Practice PySpark](#practice-pyspark)
+  * [Practice PyFlink](#practice-pyflink)
   * [Printscreen](#printscreen)
 
 ## Requirements
