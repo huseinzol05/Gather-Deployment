@@ -48,7 +48,7 @@ Gathers data science and machine learning problem solving using PyFlink.
 
 11. Simple real time text classification upsert to Apache Hudi, [tableapi-malay-sentiment-classifer-kafka-upsert-hudi.ipynb](notebook/11.tableapi-malay-sentiment-classifer-kafka-upsert-hudi.ipynb).
 
-- Simple real time text classification from Debezium CDC and upsert into Apache Hudi.
+- Simple real time text classification from Debezium CDC and upsert into Apache Hudi in HDFS.
 
 ## How-to
 

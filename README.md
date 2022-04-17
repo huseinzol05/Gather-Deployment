@@ -279,6 +279,18 @@ Stream from N camera clients using ImageZMQ -> N slaves ImageZMQ processing -> s
 
 - Simple real time text classification from Debezium CDC and upsert into Kafka Upsert.
 
+9. Simple Word Count to Apache Hudi.
+
+- Simple Table API to do Word Count and sink into Apache Hudi in HDFS.
+
+10. Simple text classification to Apache Hudi.
+
+- Load trained text classification model using UDF to classify sentiment and sink into Apache Hudi in HDFS.
+
+11. Simple real time text classification upsert to Apache Hudi.
+
+- Simple real time text classification from Debezium CDC and upsert into Apache Hudi in HDFS.
+
 ## Printscreen
 
 <img src="tensorflow/1.flasksocketio-webrtc-object-detection/screenshot.png" width="20%">
