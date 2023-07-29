@@ -2,22 +2,6 @@
 
 Gathers deployment and practices, 100% Docker.
 
-## Table of contents
-  * [Requirements](#Requirements)
-  * [Tensorflow deployment](#tensorflow-deployment)
-  * [Simple Backend](#simple-backend)
-  * [Apache stack](#apache-stack)
-  * [simple data pipeline](#simple-data-pipeline)
-  * [Realtime ETL](#realtime-etl)
-  * [Unit test](#unit-test)
-  * [Stress test](#stress-test)
-  * [Monitoring](#monitoring)
-  * [Mapping](#mapping)
-  * [Miscellaneous](#Miscellaneous)
-  * [Practice PySpark](#practice-pyspark)
-  * [Practice PyFlink](#practice-pyflink)
-  * [Printscreen](#printscreen)
-
 ## Requirements
 
 1. Docker
