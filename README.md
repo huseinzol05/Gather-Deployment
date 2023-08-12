@@ -1,6 +1,6 @@
 # Gather-Deployment
 
-Gathers scalable Tensorflow, Python infrastructure deployment and practices, 100% Docker.
+Gathers Python deployment, infrastructure and practices.
 
 ## Table of contents
   * [Requirements](#Requirements)

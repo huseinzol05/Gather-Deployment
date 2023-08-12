@@ -15,3 +15,4 @@
 practice-pyspark/notebook/model
 *.pkl
 *.output-udf.csv*
+llm/ctranslate2/app/ctranslate2
